@@ -1,0 +1,14 @@
+/*REXX*/                       /*POSSIVEL FATA DE ACESSO */   
+SAY ' ' ; SAY ' ' ; SAY ' '                                   
+SAY 'DIGITTE OPCAO DE BUSCA  (EXEC/PRINT): '                  
+PULL TIPODESAIDA                                              
+    CALL  ISFCALLS('ON')                                      
+  ADDRESS SDSF "ISFEXEC ST"                                   
+  IF RC = 0 THEN                                              
+  DO                                                          
+     DO I=1 TO TO JNAME.0                                     
+        IF SUBSTR(QUEUE.I,1,3) = TIPODESAIDA THEN             
+          SAY JNAME.1 || ' - ' || JOBLIB.I || ' - ' || QUEUE.I
+     END                                                      
+  END                                                         
+/*NO MAINFRAME, LER DADOS DA SDSF (SYSOUT , LOG E SPOOL)*/ 

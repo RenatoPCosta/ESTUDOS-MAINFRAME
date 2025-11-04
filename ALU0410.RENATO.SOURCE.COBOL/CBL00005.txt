@@ -1,0 +1,50 @@
+      ****************************************************
+      *AUTHOR: RENATO COSTA                               
+      *DATE  : 15/09/2023                                 
+      *MOTIVO: USO DO COMANDO MOVE EM DIFERENTES CONTEXTOS
+      *PROG  : CBL00005                                   
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00005.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+       SPECIAL-NAMES.                                     
+           DECIMAL-POINT IS COMMA.                        
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+       77 WS-TESTE        PIC X(16) VALUE ZEROES.         
+       77 WS-M1           PIC X(5)  VALUE ZEROES.         
+       77 WS-M2           PIC X(5)  VALUE ZEROES.         
+       77 WS-M3           PIC X(5)  VALUE ZEROES.         
+       77 WS-HORARIO      PIC X(10) VALUE ZEROES.         
+       77 WS-HORARIOB     PIC X(8)  VALUE ZEROES.         
+       77 WS-TESTESPACE   PIC X(12) VALUE "UM TESTE".     
+       01 WS-TESTEFILLER.                                                 
+          03 FILLER          PIC X(15) VALUE "FILLER TESTE".        
+       LINKAGE SECTION.                                             
+       PROCEDURE DIVISION.                                          
+       MAIN-PROCEDURE.                                              
+           MOVE '111112222233334' TO WS-TESTE.                      
+           MOVE WS-TESTE(1:5) TO WS-M1(1:5).                        
+           MOVE WS-TESTE(6:5) TO WS-M2.                             
+           MOVE WS-TESTE(11:5) TO WS-M3.                            
+           MOVE WS-TESTE(15:1) TO WS-M1(5:1).                       
+           DISPLAY WS-M1 WS-M2 WS-M3.                               
+           ACCEPT WS-HORARIOB FROM DATE YYYYMMDD.                   
+           MOVE WS-HORARIOB(1:4) TO WS-HORARIO(7:4).                
+           MOVE '/' TO WS-HORARIO(6:1).                             
+           MOVE WS-HORARIOB(5:2) TO WS-HORARIO(4:2).                
+           MOVE '/' TO WS-HORARIO(3:1).                             
+           MOVE WS-HORARIOB(7:2) TO WS-HORARIO(1:2).                
+           DISPLAY WS-HORARIO.                                      
+           DISPLAY "ANTES DE INCLUIR ESPAÇO: " WS-TESTESPACE.       
+           MOVE SPACES TO WS-TESTESPACE                             
+                          WS-TESTE.                                 
+           DISPLAY "INCLUSÃO DE ESPAÇO NA VARIÁVEL: " WS-TESTESPACE.
+      *    TESTE DE MOVE COM FILLER                                 
+           DISPLAY WS-TESTEFILLER.                                  
+           MOVE "NOVO FILLER" TO WS-TESTEFILLER.                    
+           DISPLAY WS-TESTEFILLER.                                  
+           DISPLAY 'EITA MUNDO BOM'
+           STOP RUN.               

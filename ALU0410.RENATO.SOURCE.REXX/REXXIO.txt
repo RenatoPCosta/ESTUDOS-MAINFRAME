@@ -1,0 +1,21 @@
+/*REXX*/      /*SEM ACESSO SUFICIENTE PARA TESTES*/                    
+SAY ' ' ; SAY ' ' ; SAY ' '                                            
+ DSN = 'ALU0410.RENATO.MYSYS.SYSOUT'                                   
+ "ALLOC FILE(SYSOUT) DA('ALU0410.RENATO.MYSYS.SYSOUT') SHR"            
+/*"ALLOC FILE(SYSOUT) DA('"DSN"')*/                                    
+    "EXECIO * DISKR SYSOUT (STEM LINHA."                               
+       DO I=1 TO LINHA.0                                               
+          SAY LINHA.I                                                  
+       END                                                             
+    "EXECIO * DISKR SYSOUT (FINIS"                                     
+  "FREE FILE(SYSOUT)"                                                  
+/*    EXEC * DISKR ARQUIVO 5                                           
+EXECIO QUANTIDADELINHAS   DISK    NOMEARQUIVO    7(A PARTIRDE LINHA 7) 
+                                                  R-READ               
+       5 - 5 LINHAS       DISKR                   W-WRITE              
+       * - TODAS LINHA    DISKW                   RU-READ AND UPDATE   
+                          DISKRU                                       
+                                                                       
+                                                                       
+  STEM / FIFO / LIFO ->>>> PESQUISAR                                   
+*/                                                                     

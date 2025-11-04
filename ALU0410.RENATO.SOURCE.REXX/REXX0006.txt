@@ -1,0 +1,33 @@
+/*REXX*/                                    
+SAY '     '                                 
+SAY '     '                                 
+SAY '     '                                 
+SAY '     '                                 
+/*************************/                 
+SAY 'NOTA 1: ' ; PULL N1                    
+SAY 'NOTA 2: ' ; PULL N2                    
+/*************************/                 
+MEDIA = (N1 + N2) / 2                       
+SAY MEDIA                                   
+    IF MEDIA >= 7 THEN                      
+     DO                                     
+       SAY 'APROVADO'                       
+       SAY 'BOAS FERIAS'                    
+     END                                    
+    ELSE IF MEDIA >= 5 THEN                 
+     DO                                     
+       SAY 'RECUPERACAO'                    
+       SAY 'AINDA PODE RECUPERAR'           
+     END                                    
+    ELSE                                    
+       SAY 'REPROVADO'                      
+/******************************************/
+/*SELECT                                  */
+/*    WHEN MEDIA >= 7 THEN                */
+/*        SAY 'APROVADO'                  */
+/*    WHEN MEDIA >= 5 THEN                */
+/*        SAY 'RECUPERACAO'               */
+/*    OTHERWISE                           */
+/*        SAY 'REPROVADO'                 */
+/*END                                     */
+/******************************************/

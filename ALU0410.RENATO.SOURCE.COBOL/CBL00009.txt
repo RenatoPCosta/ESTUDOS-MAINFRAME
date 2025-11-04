@@ -1,0 +1,38 @@
+      ****************************************************             
+      *AUTHOR: RENATO COSTA                                            
+      *DATE  : 08/01/2024                                              
+      *MOTIVO: COMPUTE (MATEMATICA)                                    
+      *PROG  : CBL00009.                                               
+      ****************************************************             
+       IDENTIFICATION DIVISION.                                        
+       PROGRAM-ID. CBL00009.                                           
+       ENVIRONMENT DIVISION.                                           
+       CONFIGURATION SECTION.                                          
+       SPECIAL-NAMES.                                                  
+           DECIMAL-POINT IS COMMA.                                     
+       DATA DIVISION.                                                  
+       FILE SECTION.                                                   
+       WORKING-STORAGE SECTION.                                        
+       77 WS-NUM1            PIC 9(1) VALUE ZEROES.                    
+       77 WS-NUM2            PIC 9(1) VALUE ZEROES.                    
+       LINKAGE SECTION.                                                
+       PROCEDURE DIVISION.                                             
+       MAIN-PROCEDURE.                                                 
+           COMPUTE WS-NUM1 = 5 ** 5.                                   
+           COMPUTE WS-NUM1 = WS-NUM1 / 15.                             
+           DISPLAY 'RESULTADO: ' WS-NUM1.                              
+           COMPUTE WS-NUM1 = (WS-NUM1 + 12 * (WS-NUM1 - 1)) ** 2.      
+           DISPLAY 'RESULTADO: ' WS-NUM1.        
+           MOVE 10 TO WS-NUM2.                              
+           COMPUTE WS-NUM2 = (WS-NUM1 + WS-NUM2) / 2.       
+           DISPLAY 'FINAL: ' WS-NUM2.                       
+            STOP RUN.                                       
+      *                                                     
+      * SOMA            +                                   
+      * SUBTRCAO        -                                   
+      * DIVISAO         /                                   
+      * MULTIPLICACAO   *                                   
+      * EXPONENCIACAO   **                                  
+      *                                                     
+      * COMPUTE SE TRATA DE UM COMANDO DE ATRIBUICAO,       
+      *                        NECESSITA DE UMA VARIAVEL                    

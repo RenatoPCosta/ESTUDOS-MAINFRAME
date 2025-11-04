@@ -1,0 +1,54 @@
+      ****************************************************      
+      *AUTHOR: RENATO COSTA                                     
+      *DATE  : 01/12/2023                                       
+      *MOTIVO: COMANDO PERFORM PARA USO DE SECTIONS E PARAGRAFOS
+      *PROG  : CBL00007.                                        
+      ****************************************************      
+       IDENTIFICATION DIVISION.                                 
+       PROGRAM-ID. CBL00007.                                    
+       ENVIRONMENT DIVISION.                                    
+       CONFIGURATION SECTION.                                   
+       SPECIAL-NAMES.                                           
+           DECIMAL-POINT IS COMMA.                              
+       DATA DIVISION.                                           
+       FILE SECTION.                                            
+       WORKING-STORAGE SECTION.                                 
+       77 WS-TESTE                  PIC 9(02) VALUE ZEROES.     
+       LINKAGE SECTION.                                         
+       PROCEDURE DIVISION.                                      
+       MAIN SECTION.                                            
+       MAIN-PROCEDURE.                                          
+      *EXEMPLO IN-LINE                                          
+           PERFORM                                              
+               ADD 5 TO WS-TESTE                                
+               DISPLAY WS-TESTE                                 
+           END-PERFORM.                                         
+      *EXEMPLO OUT-LINE                        
+           PERFORM P1-INICIO    THRU  P1-FIM.  
+           PERFORM P0-INICIO    THRU  P0-FIM.  
+           PERFORM P4-INICIO    THRU  P4-FIM.  
+           PERFORM S2.                         
+      *SECTIONS                                
+      *   DEFINE SECAO 1                       
+       S1 SECTION.                             
+      *________________________                
+       P0-INICIO.                              
+           DISPLAY 'OP 0'.                     
+       P0-FIM.                                 
+           CONTINUE.                           
+       P1-INICIO.                              
+           DISPLAY 'OP 1'.                     
+       P1-FIM.                                 
+           CONTINUE.                           
+      *************************                
+       S2 SECTION.                             
+      *________________________                
+       P4-INICIO.                              
+             DISPLAY 'OP 3'.                   
+       P4-FIM.                                 
+             CONTINUE.                         
+             STOP RUN.     
+      **********************************************                    
+      *SECTION = UMA SECAO QUE PODE CONTER PARAGRAFOS                   
+      *O DEFINIR UMA SECTION VOCE PODE USAR O COMANDO PERFORME PARA ->  
+      *EXECUTAR MAIS DE UM PARAGRADO POR VEZ                                                

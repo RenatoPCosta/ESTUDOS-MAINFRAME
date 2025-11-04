@@ -1,0 +1,61 @@
+/*REXX*/                                                                
+/*VARS****VARS****VARS****VARS****VARS****VARS****VARS****VARS****VARS*/
+/*TABELA TETRIXX*/                                                      
+DO I = 1 TO 14                                                          
+   VAR.I = '|          |'                                               
+END ; VAR.15 = '|----------|'                                           
+/*CONFIG PLAYER */                                                      
+PTS = 0 ; GREATPOINT = 0;                                               
+MOVE = ' ' ; NEXTBLOCK = ' ' ; BLOCK = ' '                              
+/*MAIN****MAIN****MAIN****MAIN****MAIN****MAIN****MAIN****MAIN****MAIN*/
+CALL LIMPATELAINICIO                                                    
+DO I=1 TO 5                                                             
+   CALL MOSTRAGAME                                                      
+END                                                                     
+EXIT                                                                    
+/*FUNC****FUNC****FUNC****FUNC****FUNC****FUNC****FUNC****FUNC****FUNC*/
+MOSTRAGAME:                                                             
+   DO X = 1 TO 7 /*LIMPA TELA CIMA*/                                    
+        SAY ' '                                                         
+   END                                                                  
+                                                                        
+                                                                        
+   DO X = 1 TO 15 /*MOSTRA TABELA*/                                     
+      SELECT                                                            
+        WHEN X = 6 THEN                                                 
+           SAY '                     'VAR.X 'PLAYER'                    
+        WHEN X = 7 THEN                                                 
+           SAY '                     'VAR.X 'POINTS =' PTS              
+        OTHERWISE                                                       
+           SAY '                     'VAR.X                             
+      END                                                               
+   END                                                                  
+   PTS = PTS + 50                                                       
+   DO X = 1 TO 9 /*LIMPA TELA BAIXO*/                                   
+        SAY ' '                                                         
+   END                                                                  
+RETURN                                                                  
+/*********************************************************************/ 
+LIMPATELAINICIO:                                                        
+   DO X = 1 TO 3                                                        
+        SAY 'SCREEN DIMENSION 32X80'                                    
+   END                                                                  
+RETURN                                                                  
+/***********************************************************************
+/***********************************************************************
+VAR.1  = '|          |'                                                 
+VAR.2  = '|          |'                                                 
+VAR.3  = '|   **     |'                           *************         
+VAR.4  = '|   **     |'                          *NEXT = #    *         
+VAR.5  = '|          |'                          * EX:   #    *         
+VAR.6  = '|          | PLAYER'                   *       ##   * 
+VAR.7  = '|          | POINTS:' ; PTS = 0        *            * 
+VAR.8  = '|          |'                          * PLAYER:    * 
+VAR.9  = '|          |'                          * POINTS:    * 
+VAR.10 = '|          |'                          *            * 
+VAR.11 = '|   XX    X|'                          *A - LEFT    * 
+VAR.12 = '|XXXXXX XXX|'                          *S - DOWN    * 
+VAR.13 = '|!!!!!!!!!!|'                          *D - RIGHT   * 
+VAR.14 = '|!!!!!!!!!!|'                          *M - ROTATE  * 
+VAR.15 = '|----------|'                          *************  
+*/                                                              

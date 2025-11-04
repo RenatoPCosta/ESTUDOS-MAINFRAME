@@ -1,0 +1,18 @@
+/*REXX*/                                    
+VARC = 'RENATO'                             
+VARN = 20                                   
+SAY '  '                                    
+SAY '  '                                    
+SAY '  '                                    
+SAY ' DIGITE VALOR:'                        
+PULL VARPULL                                
+    TRACE A                                 
+    IF DATATYPE(VARPULL)= 'NUM' THEN        
+        SAY 'RESULTADO' VARPULL * VARN      
+    ELSE SAY 'VALOR DIGITADO NAO NUMERICO'  
+    TRACE OFF                               
+/******************************************/
+/* COMANDO DATATYPE                       */
+/*      RETORNA NUM OU CHAR               */
+/*                                        */
+/******************************************/

@@ -1,0 +1,49 @@
+/*REXX*/  TRACE A                                                
+RETORNO = 0                                                      
+LINESTR = ''                                                     
+/******/                                                         
+/*FUNCOES NAO CONFIGURADAS                                       
+RETORNO = SYSDSN('ALU0410.RENATO.MYSYS.SYSOUT')                  
+IF RETORNO = 'OK' THEN                                           
+  SAY 'O DATASET EXISTE.'                                        
+ELSE                                                             
+  SAY 'O DATASET NãO EXISTE.'                                    
+******************************************                       
+RETORNO = SYSFILEEXISTS('ALU0410.RENATO.MYSYS.SYSOUT')  --1 OU 0 
+   IF RETORNO > 0 THEN                                           
+      DO                                                         
+        LINESTR = LINEIN('ALU0410.RENATO.MYSYS.SYSOUT')          
+        SAY LINESTR                                              
+      END                                                        
+      DO                                                         
+        LINESTR = LINEIN('ALU0410.RENATO.MYSYS.SYSOUT',3)        
+        SAY LINESTR 'CONTEUDO DA LINHA 3'                        
+      END                                                        
+   DO WHILE LINES('ALU0410.RENATO.MYSYS.SYSOUT') > 0             
+      LINESTR = LINEIN('ALU0410.RENATO.MYSYS.SYSOUT')            
+      SAY LINESTR 'CONTEUDO DO ARQUIVO TODO'                     
+   END                                                           
+
+                                                                     
+COMANDO PARA CONTAR RESGISTROS DE ARQUIVO:                           
+ FINAL= QUANTREG('ALU0410.RENATO.MYSYS.SYSOUT',C)                    
+ SAY 'NUMERO DE LINHAS:' FINAL                                       
+                                                                     
+COMANDOS DE CARACTERES                                               
+ CARC = 0                                                            
+ SAY CARC = CHARIN('ALU0410.RENATO.MYSYS.SYSOUT',1,500)              
+ NO EXEMPLO ACIMA LE A DO CARACTER 1 ATE 500, PODE USAR +D 1 REGISTRO
+                                                                     
+ CARC = CHARS('ALU0410.RENATO.MYSYS.SYSOUT')                         
+  SAY CARC                                                           
+ NO EXEMPLO ACIMA RETORNA QUANTIDA DE CARACTERES                     
+                                                                     
+ OUT = 0          ESCREVER LINHA DO ARRQUIVO EXTERNO                 
+ SAY OUT = LINEOUT('ALU0410.RENATO.MYSYS.SYSOUT','NOVO REGISTRO',4)  
+ SAY OUT   /*RETORNA SE LINHA FOI INSERIDA*/   SALVA NA LINHA 4      
+******************************************                           
+ADDRESS TSO "LISTDSI 'ALU0410.RENATO.MYSYS.SYSOUT'"     -- OK        
+IF SYSDSN = 'OK' THEN                                                
+  SAY 'O DATASET EXISTE.'                                            
+ELSE                                                                 
+  SAY 'O DATASET NAO EXISTE.' */                                     

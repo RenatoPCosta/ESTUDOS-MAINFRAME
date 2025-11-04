@@ -1,0 +1,46 @@
+      ****************************************************
+      *AUTHOR: RENATO COSTA                               
+      *DATE  : 17/02/2024                                 
+      *MOTIVO: INITIALIZE + REPLACING + FILLER            
+      *PROG  : CBL00011                                   
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00011.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+          SPECIAL-NAMES.                                  
+             DECIMAL-POINT IS COMMA.                      
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+       01 WS-NOME.                                        
+         02 WS-PNOME        PIC X(15)  VALUE 'RENATO'.    
+         02 FILLER          PIC X(15)  VALUE 'COSTA 1997'.
+         02 FILLER          PIC 9      VALUE 1.           
+         02 FILLER-NUM      PIC 9      VALUE 1.           
+      *FILLER: ALOCA ESPACO NA AREA DE MEMORIA            
+       LINKAGE SECTION.                                   
+       PROCEDURE DIVISION.                                
+       MAIN-PROCEDURE.                                    
+           DISPLAY 'SAIDA 1: ' WS-NOME.        
+           INITIALIZE WS-NOME.                                          
+           DISPLAY 'SAIDA 2: ' WS-NOME.                                 
+                                                                        
+           INITIALIZE WS-NOME REPLACING ALPHANUMERIC BY SPACES          
+               NUMERIC BY ZEROES                                        
+      *PODE SER USADO "BY 'TEXTO'"                                      
+      *PODE SER USADO "BY 9" OU OUTRO NUMERO                            
+           DISPLAY 'SAIDA 3: ' WS-NOME                                  
+           MOVE 9 TO FILLER-NUM                                         
+           DISPLAY 'SAIDA 4: ' WS-NOME                                  
+           STOP RUN.                                                    
+      *************************************************************     
+      *COMANDO INITIALISE E UTILISADO PARA RESETAR O VALOR DE UMA VAR   
+      *POREM, NAO ALTERA O VALOR DE FILLER                              
+      *OBS: MOVE E MAIS EFEITIVO PARA SITUACOES FILLER -- TESTAR PARA   
+      *POSTERIORMENTE                                                   
+      *                                                                 
+      *EM COBOL, UM "FILLER" E GERALMENTE USADO COMO UM ESPACO RESERVADO
+      *QUE NAO E UTILIZADO DIRETAMENTE NAS OPERACOES DE PROCESSAMENTO.  
+      *E COMUM USA-LO PARA PREENCHER LACUNAS NA ESTRUTURA DO REGISTRO DE
+      *DADOS OU PARA ALINHAMENTO DE CAMPOS.                                        

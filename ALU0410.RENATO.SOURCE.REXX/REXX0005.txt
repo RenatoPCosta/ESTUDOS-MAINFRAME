@@ -1,0 +1,36 @@
+/*REXX*/                                    
+CALL LIMPA                                  
+SAY 'DIGITE OPCAO: '                        
+SAY '1 - '                                  
+SAY '2 - '                                  
+SAY '3 - '                                  
+PULL OPCAO                                  
+SELECT                                      
+    WHEN OPCAO = 1 THEN                     
+        CALL RESULT1                        
+    WHEN OPCAO = 2 THEN                     
+        CALL RESULT2                        
+    WHEN OPCAO = 3 THEN                     
+        CALL RESULT3                        
+    OTHERWISE                               
+        SAY 'OPCAO INVALIDA'                
+END                                         
+EXIT                                        
+/*****************************/             
+LIMPA:                                      
+   SAY'               '                     
+   SAY'               '                     
+   SAY'               '                     
+   SAY'               '                     
+   SAY'               '                     
+   SAY'               '              
+   RETURN                            
+RESULT1:                             
+   SAY 'OPCAO ESCOLHIDA FOI: 1'      
+   RETURN                            
+RESULT2:                             
+   SAY 'OPCAO ESCOLHIDA FOI: 2'      
+   RETURN                            
+RESULT3:                             
+   SAY 'OPCAO ESCOLHIDA FOI: 3'      
+   RETURN                            

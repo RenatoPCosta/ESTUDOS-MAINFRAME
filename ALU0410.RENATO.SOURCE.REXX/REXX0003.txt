@@ -1,0 +1,4 @@
+/*REXX*/                                                           
+ARG VAR1 VAR2                                                      
+SAY VAR1 * VAR2                                                    
+/*COMANDO PARA EXECUTAR -> TSO EXEC 'CAMINHO.DESTINO(REXX)' '12 05'

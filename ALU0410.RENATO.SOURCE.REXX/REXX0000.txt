@@ -1,0 +1,10 @@
+/*REXX*/                                                          
+IDADE = 14 * 2                                                    
+SAY 'MY NAME:'                                                    
+PULL NOMEOUT                                                      
+SAY 'NOME: ' NOMEOUT ' ' || IDADE ' CONCATENADO'                  
+/*************/                                                   
+/***ADICIONANDO ESPACOS ENTE O SAY, CONSIDERA SOMENTE 1**********/
+VAR1 = 'A'                                                        
+VAR2 = 'B'                                                        
+SAY A       B                                                     

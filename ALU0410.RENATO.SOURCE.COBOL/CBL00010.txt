@@ -1,0 +1,35 @@
+      ****************************************************        
+      *AUTHOR: RENATO COSTA                                       
+      *DATE  : 15/02/2024                                         
+      *MOTIVO: INSPECT                                            
+      *PROG  : CBL00010.                                          
+      ****************************************************        
+       IDENTIFICATION DIVISION.                                   
+       PROGRAM-ID. CBL00010.                                      
+       ENVIRONMENT DIVISION.                                      
+       CONFIGURATION SECTION.                                     
+       SPECIAL-NAMES.                                             
+           DECIMAL-POINT IS COMMA.                                
+       DATA DIVISION.                                             
+       FILE SECTION.                                              
+       WORKING-STORAGE SECTION.                                   
+       77 WS-TOTAL       PIC 9(2)  VALUE ZEROES.                  
+       77 WS-DATA        PIC X(10) VALUE '15/02/2024'.            
+       LINKAGE SECTION.                                           
+       PROCEDURE DIVISION.                                        
+       MAIN-PROCEDURE.                                            
+           INSPECT WS-DATA TALLYING WS-TOTAL FOR ALL "/"          
+               BEFORE INITIAL "23".                               
+           DISPLAY WS-TOTAL.                                      
+                                                                  
+           INSPECT WS-DATA REPLACING ALL "/" BY "*"  AFTER "15".  
+           DISPLAY WS-DATA.                                            
+            STOP RUN.                                                  
+      *************************************************************    
+      * COMANDO DE INSPECIONAR DETERMINADOS CARACTERES, PODENDO SER    
+      * UTILIZADO PARA CONTAGEM OU SUBSTITUICAO                        
+      *                                                                
+      **NO CASO DE BEFORE INCITIAL, LEVA EM CONSIDERAÇÃO O VALOR MAIS  
+      **A ESQUERDA.EX UTILIZANDO A DATA 15/01/2024:                    
+      *CASO O BEFORE INITIAL SEJA  "24", O CONTADOR DARA O RESUTADO: 02
+      *CASO O BEFORE INITIAL SEJA  "5", O CONTADOR DARA O RESUTADO: 00 

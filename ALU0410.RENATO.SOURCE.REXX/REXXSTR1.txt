@@ -1,0 +1,13 @@
+/*REXX*/                                                   
+SAY ' ' ; SAY ' ' ; SAY ' '                                
+                                                           
+STR1 = 'RENATO PEREIRA COSTA RESTANTEVARIAVEL'             
+PARSE VAR STR1 N1 N2 N3                                    
+SAY N1 N3                                                  
+/******/                                                   
+REG1 = 'NOME-DA-PESSOA1'                                   
+REG2 = 'NOME;DA;PESSOA1;RESTANTEVARIAVEL'                  
+PARSE VAR REG1 R1 '-' R2 '-'  R3 ; SAY R3 R2 R1            
+PARSE VAR REG1 R1 ';' R2 ';'  R3 ; SAY R1                  
+PARSE VAR REG2 R1 ';' R2 ';'  R3 ; SAY R2 R1 R3            
+/* PARSE ARG -> EM CASO DE DADOS EXTERNOS*/                

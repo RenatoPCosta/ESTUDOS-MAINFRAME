@@ -1,0 +1,24 @@
+/*REXX*/                                                 
+VAR1 = 'HELLO WORD'                                      
+VAR2 = 'HELLO MUNDO'                                     
+EMAIL = EMAIL@TESTE.COM                                  
+SAY 'USO DE FUNCAO LEFT:     ' LEFT(VAR1,5)              
+SAY 'USO DE FUNCAO LEFT:     ' RIGHT(VAR1,4)             
+SAY 'USO DE FUNCAO LENGHT:   ' LENGTH(VAR1)              
+SAY 'USO DE FUNCAO REVERSE:  ' REVERSE(VAR1)             
+SAY 'USO DE FUNCAO COMPARE:  ' COMPARE(VAR1,VAR2)        
+SAY 'USO DE FUNCAO COPIES:   ' COPIES(VAR1,5)            
+SAY 'EXEMPLO DE USO DA FUNCAO SUBSTR:'                   
+SAY 'APENAS AS 4 PRIMEIRAS LETRAS DEPOIS DA POSICAO 2: ' 
+SAY SUBSTR(VAR1,2,4)                                     
+SAY 'USO DE FUNCAO POS:      ' POS('LL',VAR1)            
+IF POS('@',EMAIL)> 0 THEN                                
+SAY '@ DE EMAIL VALIDADO     '                           
+SAY 'DELETANDO A PARTIR DO 10 CARACTER:' DELSTR(VA1,10)  
+SAY 'EXEMPLO DE USO DELSTR EM EMAIL:'                    
+SAY DELSTR(EMAIL,POS('@',EMAIL))                         
+                                                         
+                                                         
+/*VAR1 = 'HELLO WORD'        */                          
+/*VAR2 = 'HELLO MUNDO'       */                          
+/*EMAIL = EMAIL@TESTE.COM    */                          

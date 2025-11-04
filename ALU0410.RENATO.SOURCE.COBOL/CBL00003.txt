@@ -1,0 +1,20 @@
+      ****************************************************
+      *AUTHOR: RENATO COSTA                               
+      *DATE  : 27/02/2023                                 
+      *MOTIVO: BASE COBOL                                 
+      *PROG  : CBL00001.                                  
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00001.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+       SPECIAL-NAMES.                                     
+           DECIMAL-POINT IS COMMA.                        
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+       LINKAGE SECTION.                                   
+       PROCEDURE DIVISION.                                
+       MAIN-PROCEDURE.                                    
+            DISPLAY 'OI MUNDO'                            
+            STOP RUN.                                     

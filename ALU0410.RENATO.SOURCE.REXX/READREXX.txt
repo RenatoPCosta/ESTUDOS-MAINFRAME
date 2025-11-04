@@ -1,0 +1,17 @@
+//*********************************************                 
+//*          READ-ME REXX                                       
+//*INTEIRO: ENTRE -2147483648 AT 2147483648                     
+//*                                                             
+//*TESTAR                    COMANDO ;                          
+//*SAY V1 V2                 DEBUG - COMANDO TRACE A R I        
+//*PULL V1 V2                                                   
+//*                     VARIAVEL RESULT -> SALVA ULTIMO RETURN  
+//*                                                             
+//*          **PESQUISAR AS FUNCOES REXX, EX: SQR(2)            
+//*                                                             
+//* IGUAL      =                                                
+//* DIFERENTE  <>                                               
+//* MAIOR      >                                                
+//* MENOR      <                                                
+//* MAIOR QUE  >=                                               
+//* MENOR QUE  <=                                               

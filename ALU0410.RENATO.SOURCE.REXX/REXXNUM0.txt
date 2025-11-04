@@ -1,0 +1,33 @@
+/*REXX*/                                                             
+VAR.1 = -10.5                                                        
+   SAY ABS(VAR.1) /*RETORNA 10.5              */                     
+/**************************************************/                 
+VAR.2 = 7 ; VAR.3 = 10 ; VAR.4 = 8                                   
+    /* MAIOR E MENOR VALOR*/                                         
+SAY 'VALOR MAXIMO ENTRE' VAR.2 VAR.3 VAR.4 ':' MAX(VAR.2,VAR.3,VAR.4)
+SAY 'VALOR MINIMO ENTRE' VAR.2 VAR.3 VAR.4 ':' MIN(VAR.2,VAR.3,VAR.4)
+/**************************************************/                 
+    /* VALOR ALEATORIO    */                                         
+SAY RANDOM()'TESTE VAZIO'                                            
+SAY RANDOM(500) 'TESTE 500' /* 500 COMO MAIOR VALOR POSSIVEL */      
+/**************************************************/                 
+    /* RETORNO DE SINAL   */                                         
+VAR.5 = -20 ; VAR.6 = 20                                             
+SAY SIGN(VAR.5) ' |||| ' SIGN(VAR.6)                                 
+/**************************************************/                 
+    /* ARREDONDAMENTO */                                             
+VAR.8 = -2.5                                                         
+SAY TRUNC(VAR.8)                                                     
+/*                                                                   
+ABS()    -> RETORNA O VALOR POSITIVO                                 
+MAX/MIN  -> RETORNA MAIOR VALOR DENTRO DE UM RANGE                   
+RANDOM   -> RETORNA NUMERO ALEATORIO  (AVALIAR O RANGE)              
+                ** PESQUISAR SE EXISTE ESTE RANGE                    
+SIGN     -> RETORA (1) PARA POSITIVO E (-1) PARA NEGATIVO          
+TRUNC    -> ARREDONDA VALOR DE VARIAVEL 12.5 VIRA 12 E -1.5 VIRA -1
+*/                                                                 
+             
+VARX.1 = 169.99       
+VARX.2 = VAR.1 *7     
+SAY FORMAT(VARX.1,5,3)
+SAY FORMAT(VARX.2,5,3)

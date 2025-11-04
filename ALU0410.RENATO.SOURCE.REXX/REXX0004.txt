@@ -1,0 +1,34 @@
+/*REXX*/                                                     
+NUM1 = 10                                                    
+NUM2 = 10                                                    
+CALL CALCULO(NUM1 NUM2)                                      
+/* SAY CALCULO(NUM1 NUM2)*/                                  
+SAY RESULT *2 'FINAL'                                        
+EXIT                                                         
+/*******************/                                        
+CALCULO:                                                     
+   ARG FNUM1 FNUM2                                           
+   IF DATATYPE(NUM1) = 'NUM' & DATATYPE(NUM2) = 'NUM' THEN   
+       FINAL = FNUM1 + FNUM2                                 
+       SAY 'FINAL 1:' FINAL                                  
+       RETURN FINAL                                          
+   ELSE                                                      
+   RETURN 'VALOR INVALIDO'                                   
+ /********************************/                          
+ /********************************/                          
+ /* EXEMPLO 2                    */                          
+ /*REXX*/                                                    
+ /*ARG NUM1 NUM2                            */               
+ /*SAY CALCULO(NUM1 NUM2)                   */               
+ /*EXIT                                     */               
+ /*******************************           */               
+ /*CALCULO:                                 */               
+ /*   ARG FNUM1 FNUM2                       */
+ /*   RETURN FNUM1 + FNUM2                  */
+ /*                                         */
+ /* EXEMPLO DE EXECUCAO COM ARGUMENTO EXTER-*/
+ /*NOS                                      */
+ /*                                         */
+ /*                                         */
+ /*                                         */
+ /*                                         */

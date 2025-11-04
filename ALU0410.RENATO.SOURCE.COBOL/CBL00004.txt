@@ -1,0 +1,55 @@
+      ****************************************************
+      *AUTOR : RENATO COSTA                               
+      *DATA  : 15/07/2024                                 
+      *MOTIVO: USO DO COMANDO ACCEPT EM TIME              
+      *PROG  : CBL00004    (ACCEPT - ACEITAR)             
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00004.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+       SPECIAL-NAMES.                                     
+           DECIMAL-POINT IS COMMA.                        
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+       77 WS-TESTE         PIC X(20) VALUE SPACES.        
+       77 WS-TESTEA        PIC X(20) VALUE SPACES.        
+       77 WS-TESTEB        PIC X(20) VALUE SPACES.        
+       77 WS-TESTEC        PIC X(20) VALUE SPACES.        
+       LINKAGE SECTION.                                   
+       PROCEDURE DIVISION.                                
+       MAIN-PROCEDURE.                                    
+            ACCEPT WS-TESTEA FROM DATE.                   
+            DISPLAY 'TESTE "FROM DATE" ' WS-TESTEA.       
+                                                          
+            ACCEPT WS-TESTEA FROM DATE YYYYMMDD                        
+            DISPLAY 'TESTE "DATE YYYYMMDD" ' WS-TESTEA                 
+                                                                       
+            ACCEPT WS-TESTEB FROM TIME                                 
+      *HORA MINUTO SEGUNDOS E MILESIMOS                                
+            DISPLAY 'TESTE "FROM TIME" ' WS-TESTEB                     
+                                                                       
+            ACCEPT WS-TESTEC FROM DAY                                  
+      *ANO/DIAS PASSADOS NESTE ANO                                     
+            DISPLAY 'TESTE "FROM DAY" ' WS-TESTEC                      
+                                                                       
+            ACCEPT WS-TESTEC FROM DAY YYYYDDD                          
+      *ANO/DIA                                                         
+            DISPLAY 'TESTE "DAY YYYYDDD" ' WS-TESTEC                   
+                                                                       
+            ACCEPT WS-TESTEC FROM DAY-OF-WEEK                          
+      *CONTA O DIA DA SEMANA A PARTIR DE SEGUNDA                       
+            DISPLAY 'TESTE "DAY-OF-WEEK " ' WS-TESTEC                  
+                                                                       
+            STOP RUN.                                                  
+      *****************************************************************
+      *ACCEPT - ACEITAR                                                
+      *OBTEM DADOS DE FORA DO PROGRAMA                                 
+      *    FORMATO                                                     
+      *                                                                
+      *    ACCEPT <DADOS> FROM {DATE                                
+      *                         TIME                                
+      *                         DAY                                 
+      *                         SCAPE KEY                           
+      *                             }                               

@@ -1,0 +1,10 @@
+/*REXX*/                          
+TEMPO = TIME('S')                 
+SAY TEMPO                         
+SAY "ESPERANDO 2 SEGUNDOS..."     
+                                  
+DO WHILE (TIME('S') - TEMPO) < 2  
+END                               
+SAY PRESS                         
+SAY "2 SEGUNDOS SE PASSARAM!"     
+EXIT                              

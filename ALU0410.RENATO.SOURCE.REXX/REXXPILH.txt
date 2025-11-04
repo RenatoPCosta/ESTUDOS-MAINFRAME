@@ -1,0 +1,42 @@
+/*REXX*/                                    
+SAY 'TECLE ENTER'                           
+SAY '           '                           
+SAY '           '                           
+/* QUEUE -> LIFO(LAST IN FIRST OUT) */      
+NEWSTACK                                    
+  SAY QUEUED()                              
+  QUEUE 'Q1'                                
+  QUEUE 'Q2'                                
+    DO X=1 TO QUEUED()                      
+      SAY QUEUED()                          
+      PULL VARLINHAA                        
+      SAY VARLINHAA                         
+    END                                     
+DELSTACK                                    
+                                            
+/* PUSH -> FIFO(FIRST IN FIRST OUT) */      
+NEWSTACK                                    
+  SAY QUEUED()                              
+  PUSH 'P1'                                 
+  PUSH 'P2'                                 
+ DO J=1 TO QUEUED()                         
+  SAY QUEUED()                              
+  PULL VARLINHA ; SAY VARLINHA              
+ END                                        
+DELSTACK                                        
+                                                
+/*EX*/ /* PUSH -> FIFO(FIRST IN FIRST OUT) */   
+NEWSTACK                                        
+  SAY QUEUED()                                  
+  PUSH 'E1'                                     
+  PUSH 'E2'                                     
+  PUSH 'E3'                                     
+  PUSH 'E4'                                     
+  PUSH 'E5'                                     
+ DO Y=1 TO QUEUED()                             
+  SAY QUEUED()                                  
+  PULL VARLINHAEX                               
+      IF POS('E3',VARLINHAEX) > 0 THEN          
+          SAY 'E3 LOCALIZADO'                   
+  END                                           
+DELSTACK                                        

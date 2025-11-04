@@ -1,0 +1,55 @@
+      ****************************************************
+      *AUTOR : RENATO COSTA                               
+      *DATA  : 09/03/2023                                 
+      *MOTIVO: USO DE VARIAVEIS 1                         
+      *PROG  : CBL00002.                                  
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00002.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+       SPECIAL-NAMES.                                     
+           DECIMAL-POINT IS COMMA.                        
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+      ****DADOS PESSOAIS                                  
+       77 WS-NOME       PIC X(50).                        
+       77 WS-IDADE      PIC 99    VALUE ZEROES.           
+      ****ENDERECO                                        
+       01 WS-ENDERECO.                                    
+         02 WS-RUA      PIC X(25).                        
+         02 WS-CIDADE   PIC X(25).                        
+      ****TESTE BOOL                                      
+       01 WS-TESTEBOOL  PIC 9(01) VALUE ZERO.             
+         88 WS-MYBOOLUM           VALUE 1.                
+         88 WS-MYBOOLZERO         VALUE 0.      
+      ****TESTE SOMA                            
+       01 WS-NUMEROS.                           
+         02 WS-N1       PIC 9(02) VALUE ZEROES. 
+         02 WS-N2       PIC 9(02) VALUE ZEROES. 
+       77 WS-RESULTADO  PIC Z(03) VALUE ZEROES. 
+       LINKAGE SECTION.                         
+       PROCEDURE DIVISION.                      
+       MAIN-PROCEDURE.                          
+           DISPLAY 'CBL00002 TESTE P1 INICIO'.  
+           MOVE 'RUA ONDE MORO'    TO WS-RUA.   
+           MOVE 'FRANCO DA ROCHA'  TO WS-CIDADE.
+           MOVE 50                 TO WS-N1.    
+           MOVE 30                 TO WS-N2.    
+           MOVE 'RENATO COSTA'     TO WS-NOME.  
+           MOVE '28'               TO WS-IDADE. 
+           DISPLAY WS-ENDERECO.                 
+           DISPLAY WS-NOME.                     
+           DISPLAY WS-IDADE.                    
+           COMPUTE WS-RESULTADO = WS-N1 + WS-N2.
+           DISPLAY "O RESUTADO: " WS-RESULTADO. 
+                                                
+           MOVE 1 TO WS-TESTEBOOL.              
+               DISPLAY WS-TESTEBOOL.            
+           MOVE 0 TO WS-TESTEBOOL.     
+              DISPLAY WS-TESTEBOOL.                    
+                                                       
+          DISPLAY 'CBL00002 TESTE P1 FINAL'.           
+          DISPLAY '**********************************'.
+          STOP RUN.                                             
