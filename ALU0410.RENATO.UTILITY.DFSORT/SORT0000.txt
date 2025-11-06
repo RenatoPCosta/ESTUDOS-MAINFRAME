@@ -1,0 +1,28 @@
+//SORT0000  JOB '',CLASS=A,MSGCLASS=A,TIME=(0,01),                     
+//          MSGLEVEL=(1,1),NOTIFY=ALU0410                              
+//STEP1     EXEC PGM=SORT                                              
+//SYSOUT    DD   SYSOUT=*                                              
+//*SYSPRINT  DD   DSN=ALU0410.RENATO.MYSYS.MYSYSOUT,DISP=OLD,          
+//*             UNIT=3390,VOL=SER=PR39S7     AVALIAR                   
+//SORTIN    DD   DSN=ALU0410.RENATO.MYSYS.SORTIN,DISP=SHR              
+//SORTOUT   DD   DSN=ALU0410.RENATO.MYSYS.SORTOUT,DISP=SHR             
+//SYSIN     DD   *                                                     
+ SORT FIELDS=(5,24,CH,A,29,22,CH,A)                                    
+//*ADICIONAR 4 BYTES, ARQUIVO FB                                       
+//*OS PRIMEIROS 4 BYTES SãO O RDW (RECORD DESCRIPTOR WORD).            
+//*OS DADOS REAIS COMEçAM NA POSIçãO 5.                                
+//*                                                                    
+//*OPTION VLSCMP                                                       
+//*SORTOUT   DD   DSN=ALU0410.RENATO.SYSOUTID,DISP=OLD                 
+//*SORT FIELDS=(16,4,CH,A,1,15,CH,A)                                   
+//* SORT FIELD=(16,4,A,1,15,A),FORMAT=CH                               
+//* SORT FIELD=(16,4,A,1,15,ZD,A),FORMAT=CH  USA O ZD NA SEGUNDA CHAVE 
+//*                                                                    
+//*                                                                    
+//*   USO DE CABECALHO PARA PRIMEIRA LINHA, AINDA EM TESTE             
+//* OUTFIL FNAMES=SORTOUT,                                             
+//*     HEADER1=('PERSONAGEM             LOJA')       
+//*                                                   
+//*                                                   
+//*                                                   
+//* DEPENDENDO DA ORGANIZACAO PODE SER DFSORT OU SORTD                 

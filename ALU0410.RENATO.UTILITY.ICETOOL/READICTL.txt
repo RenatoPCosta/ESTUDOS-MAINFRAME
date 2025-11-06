@@ -1,0 +1,40 @@
+//*********************************************                         
+//*          READ-ME ICETOOL                                            
+*ICETOOL= UM UTILITARIO DFSORT MULTIUSO QUE UTILIZA OS RECURSOS DO      
+*DFSORT PARAA EXECUTAR VARIAS OPERACOES EM UM OU MAIS CONJUNTOS DE      
+*DADOS EM UMA ETAPA.                                                    
+*                                                                       
+*SORT->ALTERA A SEQUENCIA DE DADOS                                      
+*COPY->DUPLICAR DADOS                                                   
+*MERGE-> COMBINAR DADOS DE FONTES DIFERENTES                            
+*EXPAND->CRIAR VARRIOS ARQUIVOS A PARTIR DE UM ARQUIVO DE ENTRADA       
+*FILTER->SELECIONA SUBCONJUNTOS DE DADOS                                
+*                                                                       
+*PRINCIPAIS CARTOES ICETOOL                                             
+*    TOOLIN    -> COMANDOS ICETOOL                                      
+*    TOOLSMSG  -> MENSAGENS ICETOOL                                     
+*    YXXXCNTL  -> CARTOES COM COMANDOS DFSORT                           
+*    DFMSG     -> MENSAGENS DE PROCESSAMENTO DFSORT                     
+*                                                                       
+*PRINCIPAIS CARTOES                                                     
+*    COPY                                                               
+*    COUNT                                                              
+*    DEFAULTS                                                           
+*    DISPLAY                                                            
+*    MODE                                                               
+*    OCCUR                                                              
+*    RANGE              
+*    SELECT             
+*    SORT               
+*    SPLICE             
+*    STATS              
+*    UNIQUE             
+*    VERIFY             
+                        
+                        
+* EXEMPLO ICETOOL       
+*//EXEMP JOB...         
+*//TOOL EXEC PGM=ICETOOL
+*//TOOLMSG DD SYSOUT=*  
+*//DFSMSG DD SYSOUT=*   
+*//TOOLIN DD*           
