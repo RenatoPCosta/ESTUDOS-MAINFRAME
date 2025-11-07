@@ -1,0 +1,8 @@
+//CRPOEFBR  JOB CRIARQ,CLASS=A,MSGCLASS=C,NOTIFY=ALU0410,TIME=(00,01),
+//             MSGLEVEL=(1,1)                                         
+//STEP1     EXEC PGM=IEFBR14                                          
+//DDCRIADO  DD DSN=ALU0410.RENATO.ARQUIPO1,                           
+//          UNIT=3390,                                                
+//          DISP=(NEW,CATLG,DELETE),                                  
+//          SPACE=(TRK,(1,1,10),RLSE),                                
+//          DCB=(RECFM=FB,LRECL=80,DSORG=PO,BLKSIZE=27920)            
