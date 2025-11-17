@@ -1,0 +1,10 @@
+//ICETCOPY    JOB ICETL,CLASS=A,MSGCLASS=C,NOTIFY=ALU0410,TIME=(0,1)
+//STEP01      EXEC PGM=ICETOOL                                      
+//TOOLMSG     DD SYSOUT=*                                           
+//DFSMSG      DD SYSOUT=*                                           
+//OUTPUT      DD SYSOUT=*                                           
+//INPUT       DD *                                                  
+000000000TESTE1                                                     
+000000000TESTE2                                                     
+//TOOLIN      DD *                                                  
+ COPY FROM(INPUT) TO(OUTPUT)                                        
