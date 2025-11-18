@@ -1,0 +1,13 @@
+/*REXX*/                                                            
+SAY ' ' ; SAY ' ' ; SAY ' '   /*SEM AUTORIZACAO DE USO DAS FUNCOES*/
+ DSN    = "'RENATO.MYSYS.SORTIN'"                                   
+ ARQSAI = "'RENATO.MYSYS.MYSYSIN'"                                  
+"ALLOC FILE(SORTIN)  DA("DSN") SHR"                                 
+"ALLOC FILE(MYSYSIN) DA("ARQSAI") LIKE("DSN") NEW"                  
+     "EXECIO * DISKR SORTIN (STEM LINHAS. FINIS"                    
+        DO I = 1 TO LINHAS.0                                        
+          IF SUBSTR(LINHAS.1,1,3) = 'ABC' THEN                      
+            LINHAS.I = '*****'                                      
+        END                                                         
+     "EXECIO * DISKW MYSYSIN (STEM LINHAS. FINIS"                   
+"FREE FILE(SORTIN MYSYSIN)"                                         

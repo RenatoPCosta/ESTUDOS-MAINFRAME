@@ -1,0 +1,23 @@
+/*REXX*/                                                          
+SAY ' ' ; SAY ' ' ; SAY ' '                                       
+ PDS = LISTDSI('RENATO.SOURCE.REXX' 'DIRECTORY')                  
+IF PDS = 0 THEN                                                   
+    DO                                                            
+        SAY ' ' SYSDSNAME                                         
+        SAY ' ' SYSRECFM                                          
+        SAY ' ' SYSDSORG                                          
+        SAY ' ' SYSMEMBERS                                        
+        IF SYSMEMBERS > 0 THEN                                    
+           DO                                                     
+               X = OUTTRAP('MEMBRO.')                             
+                  "LISTDS ('RENATO.SOURCE.REXX') MEMBERS"         
+               X = OUTTRAP('OFF')                                 
+               DO I = 1 TO MEMBRO.0                               
+                    SAY 'MEMBRO: ' MEMBRO.I                       
+               END                                                
+           END                                                    
+    END                                                           
+ELSE                                                              
+    SAY 'PARTICIONADO NAO EXISTE'                                 
+/*SEM AUTORIZACAO DE USO DAS FUNCOES*/                            
+/*PDS = LISTDSI('ALU0410.RENATO.SOURCE.REXX' 'DIRECTORY')*/       
