@@ -1,0 +1,36 @@
+      ****************************************************              
+      *AUTHOR: RENATO COSTA                                             
+      *DATE  : 27/11/2023                                               
+      *MOTIVO: BASE COBOL                                               
+      *PROG  : CBL00018.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00018.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       WORKING-STORAGE SECTION.                                         
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+            GOBACK.                                                     
+      *OPERADORES LOGICOS LITERAIS VS OPERADORES LOGICOS DE NOMENCLATURA
+      *            <   |  LESS THAN                                     
+      *            >   |  GREAT THAN                                    
+      *            =   |  IQUAL TO                                      
+      *           <>   |  NOT EQUAL TO                                  
+      *        NOT >   |  LESS THAN OR EQUAL                            
+      *        NOT <   |  GREATER THAN OR EQUAL                         
+      *        NOT =   |  NOT EQUAL TO                                  
+      *********************************************************         
+      *        AND -> IF CONDI1 AND CONDI2                    
+      *                  COMANDO                              
+      *               END-IF                                  
+      ************                                            
+      *        OR -> IF CONDI1 OR CONDI2                      
+      *                  COMANDO                              
+      *               END-IF                                  
+      ************                                            
+      *        NOT -> IF NOT CONDI1                           
+      *                  COMANDO                              
+      *               END-IF                                  

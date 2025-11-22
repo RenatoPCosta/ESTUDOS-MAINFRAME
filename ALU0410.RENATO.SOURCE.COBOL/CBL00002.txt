@@ -1,55 +1,144 @@
-      ****************************************************
-      *AUTOR : RENATO COSTA                               
-      *DATA  : 09/03/2023                                 
-      *MOTIVO: USO DE VARIAVEIS 1                         
-      *PROG  : CBL00002.                                  
-      ****************************************************
-       IDENTIFICATION DIVISION.                           
-       PROGRAM-ID. CBL00002.                              
-       ENVIRONMENT DIVISION.                              
-       CONFIGURATION SECTION.                             
-       SPECIAL-NAMES.                                     
-           DECIMAL-POINT IS COMMA.                        
-       DATA DIVISION.                                     
-       FILE SECTION.                                      
-       WORKING-STORAGE SECTION.                           
-      ****DADOS PESSOAIS                                  
-       77 WS-NOME       PIC X(50).                        
-       77 WS-IDADE      PIC 99    VALUE ZEROES.           
-      ****ENDERECO                                        
-       01 WS-ENDERECO.                                    
-         02 WS-RUA      PIC X(25).                        
-         02 WS-CIDADE   PIC X(25).                        
-      ****TESTE BOOL                                      
-       01 WS-TESTEBOOL  PIC 9(01) VALUE ZERO.             
-         88 WS-MYBOOLUM           VALUE 1.                
-         88 WS-MYBOOLZERO         VALUE 0.      
-      ****TESTE SOMA                            
-       01 WS-NUMEROS.                           
-         02 WS-N1       PIC 9(02) VALUE ZEROES. 
-         02 WS-N2       PIC 9(02) VALUE ZEROES. 
-       77 WS-RESULTADO  PIC Z(03) VALUE ZEROES. 
-       LINKAGE SECTION.                         
-       PROCEDURE DIVISION.                      
-       MAIN-PROCEDURE.                          
-           DISPLAY 'CBL00002 TESTE P1 INICIO'.  
-           MOVE 'RUA ONDE MORO'    TO WS-RUA.   
-           MOVE 'FRANCO DA ROCHA'  TO WS-CIDADE.
-           MOVE 50                 TO WS-N1.    
-           MOVE 30                 TO WS-N2.    
-           MOVE 'RENATO COSTA'     TO WS-NOME.  
-           MOVE '28'               TO WS-IDADE. 
-           DISPLAY WS-ENDERECO.                 
-           DISPLAY WS-NOME.                     
-           DISPLAY WS-IDADE.                    
-           COMPUTE WS-RESULTADO = WS-N1 + WS-N2.
-           DISPLAY "O RESUTADO: " WS-RESULTADO. 
-                                                
-           MOVE 1 TO WS-TESTEBOOL.              
-               DISPLAY WS-TESTEBOOL.            
-           MOVE 0 TO WS-TESTEBOOL.     
-              DISPLAY WS-TESTEBOOL.                    
-                                                       
-          DISPLAY 'CBL00002 TESTE P1 FINAL'.           
-          DISPLAY '**********************************'.
-          STOP RUN.                                             
+      ****************************************************              
+      *AUTOR : RENATO COSTA                                             
+      *DATA  : 09/03/2023                                               
+      *MOTIVO: USO DE VARIAVEIS 1                                       
+      *PROG  : CBL00002.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00002.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       SPECIAL-NAMES.                                                   
+           DECIMAL-POINT IS COMMA.                                      
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       WORKING-STORAGE SECTION.                                         
+      ****DADOS PESSOAIS                                                
+       77 WS-NOME       PIC A(50).                                      
+      * PIC A - ALFABETICO                                              
+       77 WS-IDADE      PIC 99    VALUE ZEROES.                         
+      ****ENDERECO                                                      
+       01 WS-ENDERECO.                                                  
+         02 WS-RUA      PIC X(25).                                      
+      * PIC A - ALFANUMERICO                                            
+         02 WS-CIDADE   PIC X(25).                                      
+      ****TESTE BOOL                                                    
+       01 WS-TESTEBOOL  PIC 9(01) VALUE ZERO.                           
+         88 WS-MYBOOLUM           VALUE 1 THRU 2 , 5.                   
+         88 WS-MYBOOLZERO         VALUE 0.                       
+      ****TESTE SOMA                                             
+       01 WS-NUMEROS.                                            
+         02 WS-N1       PIC 9(02) VALUE ZEROES.                  
+         02 WS-N2       PIC 9(02) VALUE ZEROES.                  
+       77 WS-RESULTADO  PIC Z(03) VALUE ZEROES.                  
+      *    Z TIPO STRING     RETIRA ZEROS A ESQUERDA DO NUMERO   
+       LINKAGE SECTION.                                          
+       PROCEDURE DIVISION.                                       
+       MAIN-PROCEDURE.                                           
+           DISPLAY 'CBL00002 TESTE P1 INICIO'.                   
+           MOVE 'RUA ONDE MORO'    TO WS-RUA.                    
+           MOVE 'FRANCO DA ROCHA'  TO WS-CIDADE.                 
+           MOVE 50                 TO WS-N1.                     
+           MOVE 30                 TO WS-N2.                     
+           MOVE 'RENATO COSTA'     TO WS-NOME.                   
+           MOVE '28'               TO WS-IDADE.                  
+           DISPLAY WS-ENDERECO.                                  
+           DISPLAY WS-NOME.                                      
+           DISPLAY WS-IDADE.                                     
+           COMPUTE WS-RESULTADO = WS-N1 + WS-N2.                 
+           DISPLAY "O RESUTADO: " WS-RESULTADO.                  
+                                                                 
+           SET WS-MYBOOLUM   TO TRUE.                            
+               IF WS-MYBOOLUM THEN                               
+                  DISPLAY WS-TESTEBOOL                           
+               END-IF.                                           
+           MOVE 0 TO WS-TESTEBOOL.                                      
+               DISPLAY WS-TESTEBOOL.                                    
+                                                                        
+           DISPLAY 'CBL00002 TESTE P1 FINAL COM SUCESSO'.               
+           DISPLAY '**********************************'.                
+           GOBACK.                                                      
+      ******************************************************************
+      *IDENTIFICATION DIVISION:A PRIMEIRA DIVISAO DE UM PROGRAMA COBOL  
+      * ELA CONTEM INFORMACOES SOBRE O PROGRAMA, COMO O NOME DO PROGRAMA
+      *A IDENTIFICACAO DO AUTOR E A DATA DE CRIACAO.                    
+      ******************************************************************
+      *ENVIRONMENT DIVISION: USADA PARA ESPECIFICAR                     
+      *AS CONDICOES SOB AS QUAIS O PROGRAMA SERA EXECUTADO.             
+      *ISSO INCLUI DECLARACOES DE ARQUIVOS, CONFIGURACOES DE DISPOSITIVO
+      *DE E/S E OUTRAS INFORMACOES DE AMBIENTE.                         
+      *        - CONFIGURATION SECTION                                  
+      *        - INPUT-OUTPUT SECTION                                   
+      ******************************************************************
+      *DATA DIVISION: USADA PARA DEFINIR A ESTRUTURA DE DADOS DO        
+      *   PROGRAMA.                                                     
+      *AQUI, VOCE DECLARA VARIAVEIS E ESPECIFICA SEU TIPO, TAMANHO E    
+      *OUTROS ATRIBUTOS.                                                
+      *        - FILE SECTION                                           
+      *        - WORKING-STORAGE SECTION                                
+      *        - LINKAGE SECTION                                        
+      *        - SCREEN SECTION                                         
+      *        - REPORT SECTION                                         
+      ******************************************************************
+      *WORKING-STORAGE SECTION.                                         
+      *ITENS DE GRUPO - ITENS QUE PODEM SER SUBSTITUIDOS EM OUTROS ITENS
+      *GRUPO OU EM CONJUNTOS DE ITENS ELEMENTARES                       
+      *  ITENS ELEMENTARES = SAO INTENS QUE NAO SAO SUBDIVIDIDOS        
+      ******************************************************************
+      *PROCEDURE DIVISION:CONTEM O CODIGO DO PROGRAMA, ONDE A LOGICA DE 
+      *NEGOCIOS EH IMPLEMENTADA.                                        
+      *AS INSTRUCOES COBOL SAO USADAS PARA REALIZAR OPERACOES COMO      
+      *CALCULOS,TOMADA DE DECISOES E MANIPULACAO DE DADOS.              
+      *        - SECTION                                                
+      *        - PARAGRAFOS                                             
+      ******************************************************************
+      ******************************************************************
+      *"-" CONTINUACAO DE UMALITERAL - QUANDO O TEXTO PASSA DE UMA LINHA
+      *"*" LINHA DE COMENTARIO                                          
+      *"/" DETERMINA SALTO DE PAGINA NO RELATORIO DE COMPILACAO - NAO   
+      *     USADO ATUALMENTE                                            
+      * MELHOR PESQUISAR SOBRE O "/"                                    
+      * COLUNAS:                                                        
+      *1 A 6 - AREA DE NUMERACAO                                        
+      *  7   - AREA DE INDICACAO "-" "*" "/"                            
+      *8 A 11 - AREA A - NOME DE DIVISOES, SECOES E PARAGRAFOS          
+      *12 A 72 - AREA B (INSTRUCAO COBOL)                               
+      *73 A 80 - AREA DE COMENTARIO                                     
+      *NIVEL OU INDICADOR DE NIVEL                                      
+      *                                                                 
+      *01 - DEFINE ITEM DE GRUPO - EX:DATA -                            
+      *02 - 49 DEFINE ITENS SUBORDINADOS A UM OUTRO ITEM , OU GRUPO DE  
+      *ITENS ELEMENTARES DO ITEM DE GRUPO - EX: MÊS, DIA, ANO           
+      *******                                                           
+      *77 - ITEM IDEPENDENTE, NAO POSSUI SUB ITEM                       
+      *******                                                           
+      *66 - RENOMEAR VARIAVEL                                           
+      *******                                                           
+      *88 - ESPECIFICA CONDICOES QUE DEVEM SER ASSOCIADOS A VALORES     
+      *                                     ARTICULARES(BOOL)           
+      ******                                                            
+      *COMANDO FILLER - CONSTANTE                                       
+      *  01 REGISTRO-EXEMPLO.                                           
+      *       05 CAMPO-1        PIC X(10).                              
+      *       05 FILLER         PIC X(5) VALUES SPACES.  /* ESTE EH UM  
+      *                                                CAMPO FILLER.    
+      *       05 CAMPO-2        PIC 9(5).                               
+      ******************************************************************
+      ******************************************************************
+      ******************************************************************
+      *MASCARAS                                                         
+      *                                                                 
+      *    PIC 999.999.999,99                                           
+      *    PIC ZZZ.ZZZ.ZZ9,99 ESCONDE OS ZEROS                          
+      *    PIC ---.---.--9,99 PODE ASSUMIR VALOR NEGATIVO               
+      *    PIC $$$.$$$.$$9,99 PODE ASSUMIR VALOR NEGATIVO               
+      *    PIC ***.***.**9,99 PODE ASSUMIR VALOR NEGATIVO               
+      *    PIC 999.999.999,99CR                                         
+      *    PIC 999.999.999,99DB                                         
+      *    PIC 999B999B999 SUPRESSAO                                    
+      *        MOVE VAR-COM-MASCARA TO PARTE1 PARTE2 PARTE3.            
+      *            DISPLAY 'PARTE 1: ' PARTE1.                          
+      *            DISPLAY 'PARTE 2: ' PARTE2.                          
+      *            DISPLAY 'PARTE 3: ' PARTE3.                          
+      *                                                                 
+      ******************************************************************

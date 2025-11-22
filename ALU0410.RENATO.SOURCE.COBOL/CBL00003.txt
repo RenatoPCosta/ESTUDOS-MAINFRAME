@@ -1,20 +1,87 @@
-      ****************************************************
-      *AUTHOR: RENATO COSTA                               
-      *DATE  : 27/02/2023                                 
-      *MOTIVO: BASE COBOL                                 
-      *PROG  : CBL00001.                                  
-      ****************************************************
-       IDENTIFICATION DIVISION.                           
-       PROGRAM-ID. CBL00001.                              
-       ENVIRONMENT DIVISION.                              
-       CONFIGURATION SECTION.                             
-       SPECIAL-NAMES.                                     
-           DECIMAL-POINT IS COMMA.                        
-       DATA DIVISION.                                     
-       FILE SECTION.                                      
-       WORKING-STORAGE SECTION.                           
-       LINKAGE SECTION.                                   
-       PROCEDURE DIVISION.                                
-       MAIN-PROCEDURE.                                    
-            DISPLAY 'OI MUNDO'                            
-            STOP RUN.                                     
+      ****************************************************             
+      *AUTOR : RENATO COSTA                                            
+      *DATA  : 17/05/2023                                              
+      *MOTIVO: USO DE VARIAVEIS 2                                      
+      *PROG  : CBL00003.                                               
+      ****************************************************             
+       IDENTIFICATION DIVISION.                                        
+       PROGRAM-ID. CBL00003.                                           
+       ENVIRONMENT DIVISION.                                           
+       CONFIGURATION SECTION.                                          
+       SPECIAL-NAMES.                                                  
+           DECIMAL-POINT IS COMMA.                                     
+       DATA DIVISION.                                                  
+       FILE SECTION.                                                   
+       WORKING-STORAGE SECTION.                                        
+       77 WS-ALFAB            PIC A(10) VALUE SPACES.                  
+       77 WS-ALFAN            PIC X(10) VALUE SPACES.                  
+       01 WS-DATA             PIC X(08) VALUE SPACES.                  
+       01 WS-DMA              REDEFINES WS-DATA.                       
+      * //PODE SER NOMEADO COMO WS-DATA-R AO INVÉS DE FILLER           
+          03 WS-DIADEF-DMA        PIC 99.                              
+          03 WS-MESDEF-DMA        PIC 99.                              
+          03 WS-ANO-DMA           PIC 9999.                            
+       01 WS-AMD.                                                      
+      * //PODE SER NOMEADO COMO WS-DATA-R AO INVÉS DE FILLER           
+          03 WS-ANO-AMD           PIC 9999.                            
+          03 FILLER               PIC X.                               
+          03 WS-MESDEF-AMD        PIC 99.                               
+          03 FILLER               PIC X.                                
+          03 WS-DIADEF-AMD        PIC 99.                               
+       66 WS-DMAR    RENAMES   WS-ANO-AMD   THRU WS-DIADEF-AMD.         
+      * NIVEL 66 DEVE VIR EM SEGUIDA DO CONJUNTO RENOMEADO              
+      *      MOVE '18/10/2025' TO  WS-AMD                               
+      *********************                                             
+       77 WS-DEPOSITO         PIC 9(13)V99 VALUE ZEROES.                
+      * MAXIMO:0 AO 99.999.999.999,99 TOTALIZANDO 13                    
+      *********************                                             
+       77 WS-SAQUE            PIC S9(13)V99 VALUE ZEROES.               
+      * MAXIMO: -99.999.999.999,99 AO 99.999.999.999,99 TOTALIZANDO 13 E
+      *ACEITA SINAL NEGATIVO NO VALOR                                   
+      *********************                                             
+       77 WS-COMPAC-REAL      PIC S9(13)V99 VALUE ZEROES COMP-3.        
+      * COMPACTA TIPO REAL    - NAO RETIRA ZEROS A ESQUERDA             
+      *********************                                             
+       77 WS-COMPAC-INT       PIC 9(13)V99 VALUE ZEROES COMP.           
+      * COMPACTA TIPO INTEIRO (BINARIO) - RETIRA ZEROS A ESQUERDA       
+      *********************                                             
+       77 WS-MASCARA          PIC 9(3)B9(3)B9(3) VALUE ZEROES.          
+      * NO EXEMPLO DIVIDE EM 3                                          
+      *********************                                             
+       77 FILLER              PIC X(10) VALUE "GAY".                    
+       01 WS-NUM              PIC 9(1) VALUE 0.                         
+      * OUTRA FORMA DE INICIAR A VARIAVEL NUMERICA                      
+          88 MAX              VALUE 1 THRU 8.                           
+       01 WS-MESES            PIC 9(2).                                 
+          88 WS-SEMESTRE1     VALUE 1 THRU 6.                           
+          88 WS-SEMESTRE2     VALUE 7 THRU 12.                          
+      *********************                                             
+       01 WS-EXEMPLOS-NIVEL-88  PIC 9(003).                             
+          88 WS-CPMF            VALUE 100, 101.                         
+          88 WS-IOF             VALUE 200 THRU 299, 301, 302.           
+          88 WS-JUROS           VALUE 600, 610, 611.                    
+      *NIVEL 88 NAO EXISTE DE FORMA INDEPENDENTE                        
+       01 WS-STATUS-PEDIDO  PIC X.                                      
+          88 APROVADO       VALUE 'A'.                                  
+          88 REPROVADO      VALUE 'R'.                                  
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+               EVALUATE WS-EXEMPLOS-NIVEL-88                            
+                   WHEN 100 THRU 101                                    
+                      DISPLAY 'TESTE 1'                                 
+                   WHEN OTHER                                           
+                      DISPLAY 'OUTROS RESULTADOS'                       
+               END-EVALUATE.                                            
+                                                                        
+               SET WS-CPMF TO TRUE                                      
+               EVALUATE WS-EXEMPLOS-NIVEL-88                            
+                   WHEN 100 THRU 101                                    
+                      DISPLAY 'TESTE 1'                                 
+                   WHEN OTHER                                           
+                      DISPLAY 'OUTROS RESULTADOS'                       
+                      DISPLAY 'OUTROS RESULTADOS'                   
+               END-EVALUATE.                                        
+      *        DISPLAY DO NIVEL 66                                  
+               MOVE 1997 TO  WS-ANO-AMD.                            
+               DISPLAY WS-DMAR.                                     
+           GOBACK.                                                  

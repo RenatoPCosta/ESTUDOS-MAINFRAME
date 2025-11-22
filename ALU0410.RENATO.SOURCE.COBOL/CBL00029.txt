@@ -1,0 +1,45 @@
+      ****************************************************
+      *AUTHOR: RENATO COSTA                               
+      *DATE  : 27/02/2023                                 
+      *MOTIVO: BASE COBOL                                 
+      *PROG  : CBL00022.                                  
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00001.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+       SPECIAL-NAMES.                                     
+           DECIMAL-POINT IS COMMA.                        
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+       LINKAGE SECTION.                                   
+       PROCEDURE DIVISION.                                
+       MAIN-PROCEDURE.                                    
+                            
+            GOBACK. 
+      ****************************************************
+      *CALL ESTATICO
+      *
+      *O CODIGO DO PROGRAMA CHAMADO EH INCLUIDO NO PROGRAMA CHAMADOR
+      *NA ALTURA DA LIKEDICAO. DESSTE MODO, SEMPRE QUE O PROGRAMA 
+      *CHAMADOR EH ALTERADO, EH NECESSARIO RECOMPILAR TODOS OS 
+      *PROGRAMAS QUE O CHAMAM.
+      *--TEM COMPORTAMENTO DE STRING
+      *
+      *EX: CALL 'PGM0002' USING CAREA-PGM0002.
+      ***************************************************
+      *CALL DINAMICO
+      *
+      *O CODIGO DO PROGRAMA CHAMADO APENAS EH OBTIDO DURANTE A 
+      *EXECUCAO DO PROGRAMA CHAMADOR, PELO QUE, SEMPRE QUE O PROGRAMA
+      *CHAMADOR FOR ALTERADO, O PROGRAMA CHAMADO "APANHA" A NOVA VERSAO.
+      *--TEM COMPORTAMENTO DE VARIAVEL
+      *
+      *EX: CALL PGM0002 USING CAREA-PGM0002.
+      ***************************************************
+      ***************************************************
+      ***************************************************
+      *A COMUNICACAO ENTRE PROGRAMAS OCORRE POR VARIAVEIS
+      *ESTAS PODEM MUDAR DE NOME ENTRE OS PROGRAMAS MAS DEVEM
+      *POSSUIR O MESMO TIPO DE ESTRUTURA, TIPO/TAMANHO                                    
