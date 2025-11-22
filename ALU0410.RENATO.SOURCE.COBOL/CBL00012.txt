@@ -1,0 +1,96 @@
+      ****************************************************              
+      *AUTHOR: RENATO COSTA                                             
+      *DATE  : 27/11/2023                                               
+      *MOTIVO: STRING  (CONCATENACAO)                                   
+      *PROG  : CBL00012.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00012.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       WORKING-STORAGE SECTION.                                         
+       77 WS-CONT1    PIC X(30) VALUE SPACES.                           
+       77 WS-CONT2    PIC X(30) VALUE SPACES.                           
+       77 WS-PONTEIRO PIC 9(02) VALUE ZEROES.                           
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+      ******************************************************************
+      *FORMA 1                                                          
+           INITIALIZE WS-CONT1                                          
+                      WS-CONT2.                                         
+           STRING                                                       
+           'RENATO'                                                     
+           ' '                                                          
+           'COSTA'                                                      
+           DELIMITED BY SIZE INTO WS-CONT1                              
+           END-STRING.                                                  
+           DISPLAY 'FORMA 1: ' WS-CONT1.                                
+      ******************************************************************
+      ******************************************************************
+      *FORMA 2                                                          
+           INITIALIZE WS-CONT1                                          
+                      WS-CONT2.                                         
+           MOVE 'TESTE DE MOVE' TO WS-CONT2.                            
+           STRING                                                       
+              WS-CONT2(1:5)                                             
+              '***'                                                     
+              WS-CONT2(7:2)                                             
+               DELIMITED BY SIZE INTO WS-CONT1                          
+            END-STRING.                                                 
+            DISPLAY 'FORMA 2: ' WS-CONT1.                               
+      ******************************************************************
+      *FORMA 3                                                          
+           INITIALIZE WS-CONT1                                          
+                      WS-CONT2.                                         
+           MOVE 'TESTE DE MOVE' TO WS-CONT2.                            
+           STRING                                                       
+              WS-CONT2(1:5)                                             
+              '*****'                                                   
+              WS-CONT2(10:4)                                            
+              DELIMITED BY SPACES INTO WS-CONT1                         
+      *DELIMITADO POR ESPACO, PODE SER USADO OUTROS CARATERES EX: BU '@'
+           END-STRING.                                                  
+           DISPLAY 'FORMA 3: ' WS-CONT1.                                
+      ******************************************************************
+      *FORMA 4                                                          
+           INITIALIZE WS-CONT1                                          
+                      WS-CONT2.                                         
+           MOVE 'TESTE DE MOVE' TO WS-CONT2.                            
+           STRING                                                       
+              WS-CONT2                                                  
+              'RS'                                                      
+              DELIMITED BY 'S' INTO WS-CONT1                            
+           END-STRING.                                                  
+              DISPLAY 'FORMA 4: ' WS-CONT1.                             
+      *  RESULTADO = TER (APOS O 'S' PARA DE LER O CONTEUDO INSERIDO    
+      ******************************************************************
+      *FORMA 5  PONTEIRO                                                
+           INITIALIZE WS-CONT1                                          
+                      WS-CONT2.                                         
+           MOVE '*****-----*****' TO WS-CONT2.                          
+           MOVE 6 TO WS-PONTEIRO.                                       
+           STRING                                                       
+              '*****'                                                   
+              DELIMITED BY SIZE INTO WS-CONT2                           
+              WITH POINTER WS-PONTEIRO                                  
+                  ON OVERFLOW                                           
+                      DISPLAY "ERRO: CAMPO NAO COMPORTA CONCATENACAO."  
+                  NOT ON OVERFLOW                                       
+                      DISPLAY "CONCATENACAO REALIZADA COM SUCESSO."     
+           END-STRING.                                                  
+              DISPLAY 'FORMA 5.1:' WS-CONT2.                            
+              DISPLAY 'FORMA 5.2:' WS-PONTEIRO.                         
+      ******************************************************************
+      ******************************************************************
+      ******************************************************************
+      * WITH POINTER -> CONTADOR                                        
+      *NO EXEMPLO 5 A QUANTIDADE DE BYTES USADOS NO PONTEIRO TOTALIZA 11
+      *6 DE ONDE INCIA + 5 DO SEU VALOR DEFINIDO NO TEXTO '*****'       
+      *              PONTEIR FUNCIONA DE FORMA DINAMICA                 
+      ******************************************************************
+      * ON OVERFLOW -> TRATAMENTO DE ERRO (QUANDO O DESTINO NAO COMPORTA
+      *  O RESULTADO).                                                  
+      * NOT ON OVERFLOW -> TRATAMENTO NORMAL (QUANDO TUDO CORRE BEM).   
+           GOBACK.                                                      

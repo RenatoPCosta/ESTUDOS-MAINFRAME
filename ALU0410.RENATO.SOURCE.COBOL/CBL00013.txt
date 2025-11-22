@@ -1,0 +1,76 @@
+      ****************************************************   
+      *AUTHOR: RENATO COSTA                                  
+      *DATE  : 09/03/2024                                    
+      *MOTIVO: UNSTRING (QUEBRA DE STRING)                   
+      *PROG  : CBL00013.                                     
+      ****************************************************   
+       IDENTIFICATION DIVISION.                              
+       PROGRAM-ID. CBL00013.                                 
+       ENVIRONMENT DIVISION.                                 
+       CONFIGURATION SECTION.                                
+       DATA DIVISION.                                        
+       FILE SECTION.                                         
+       WORKING-STORAGE SECTION.                              
+       77 WS-NOME                 PIC X(30) VALUE            
+                                     'RENATO PEREIRA COSTA'. 
+      *********************************                      
+       01 WS-NOMEUNSTRING.                                   
+          02 WS-PRIMNOME          PIC X(10) VALUE SPACES.    
+          02 WS-MEIONOME          PIC X(10) VALUE SPACES.    
+          02 WS-ULTINOME          PIC X(10) VALUE SPACES.    
+      *********************************                      
+       77 WS-APRESENTA            PIC X(50) VALUE SPACES.    
+       01 WS-CONTADOR.                                       
+          02 WS-POINTER           PIC 9(02) VALUE 1.         
+          02 WS-TOTALCAMPOS       PIC 9(02) VALUE ZEROES.    
+       01 WS-CONTADORES-AUX.                                 
+          02 WS-CONTPRIMNOM       PIC 9(02) VALUE ZEROES.    
+          02 WS-CONTMEIONOME      PIC 9(02) VALUE ZEROES.               
+          02 WS-CONTULTINOME      PIC 9(02) VALUE ZEROES.               
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+            UNSTRING                                                    
+                 WS-NOME                                                
+                 DELIMITED BY SPACES                                    
+                 INTO WS-PRIMNOME                                       
+                      WS-MEIONOME                                       
+                      WS-ULTINOME                                       
+            END-UNSTRING.                                               
+            DISPLAY WS-NOMEUNSTRING.                                    
+      *******************************FORMA 2****************************
+            INITIALIZE WS-NOMEUNSTRING.                                 
+            UNSTRING                                                    
+                 WS-NOME                                                
+                 DELIMITED BY SPACES                                    
+                 INTO WS-PRIMNOME                                       
+                      WS-MEIONOME                                       
+                      WS-ULTINOME                                       
+                 WITH POINTER WS-POINTER                                
+                 TALLYING IN WS-TOTALCAMPOS                             
+            END-UNSTRING.                                               
+            DISPLAY 'FORMA 2: ' WS-NOMEUNSTRING.                        
+            COMPUTE WS-POINTER = WS-POINTER - 1.                        
+            DISPLAY 'FORMA 2(PONTEIRO): ' WS-POINTER.                   
+            DISPLAY 'FORM 2(TALLYING-TOTAL DE CAMPOS): ' WS-TOTALCAMPOS.
+      *******************************FORMA 3****************************
+           INITIALIZE WS-NOMEUNSTRING.                                  
+           MOVE 'RENATO*PEREIRA;;;;COSTA' TO WS-NOMEUNSTRING.           
+           UNSTRING                                                     
+                WS-NOME                                                 
+                DELIMITED BY '*' OR ALL ';' OR SPACES                   
+                INTO WS-PRIMNOME COUNT IN WS-CONTPRIMNOM                
+                     WS-MEIONOME COUNT IN WS-CONTMEIONOME               
+                     WS-ULTINOME COUNT IN WS-CONTULTINOME               
+           END-UNSTRING.                                                
+           DISPLAY 'FORMA 3: ' WS-NOMEUNSTRING.                         
+           DISPLAY 'TAMANHO CAMPO 1: ' WS-CONTPRIMNOM.                  
+           DISPLAY 'TAMANHO CAMPO 2: ' WS-CONTMEIONOME.                 
+           DISPLAY 'TAMANHO CAMPO 3: ' WS-CONTULTINOME.                 
+      *******************************FORMA 4****************************
+      *******************************FORMA 5****************************
+            GOBACK.                                                     
+      * QUEBRA DE STRING EM MAIS DE UMA PARTE
+      * PONTEIRO PODE DELIMITAR A PARTIR DE ONDE A LEITURA E MANIPUACAO
+      *      SE O PRIMEIRO CARACTER FOR DELIMITADOR, A VARIAVEL RECEBE
+      *      UM VALOR EM BRANCO (AVALIAR SE NULL)
+      *

@@ -1,8 +1,8 @@
       ****************************************************
       *AUTHOR: RENATO COSTA                               
-      *DATE  : 27/02/2023                                 
-      *MOTIVO: BASE COBOL                                 
-      *PROG  : CBL00001.                                  
+      *DATE  : 27/12/2023                                 
+      *MOTIVO: COMANDOS DE ENCERRAMENTO                                 
+      *PROG  : CBL00008.                                  
       ****************************************************
        IDENTIFICATION DIVISION.                           
        PROGRAM-ID. CBL00001.                              
@@ -17,4 +17,19 @@
        PROCEDURE DIVISION.                                
        MAIN-PROCEDURE.                                    
             DISPLAY 'OI MUNDO'                            
-            STOP RUN.                                     
+            STOP RUN.                 
+      ************COMANDOS DE ENCERRAMENTO************          
+      *PROGRAMAS:                                               
+      *RETORNOS DIFERENTES, NEM SEMPRE EXTERNO                  
+      *PROGRAMA PRINCIAL                                        
+      *STOP RUN -  RETORNA AO SISTEMA OPORACIONAL               
+      *GOBACK   -  RETORNA AO CHAMADOR (SO)                     
+      *PROGRAMA SUBPROGRAMA/SUB-ROTINA/MÓDULO:                  
+      *GOBACK   -  RETORNA AO CHAMADOR, MELHOR PARA CICS BATCH  
+      *EXIT PROGRAM - APENAS SUB-PRORAMAS, VOLTA AO CHAMADOR    
+      **CANCEL - ABORTA O PROCESSAMENTO DO SUBPROGRAMA, ANULA   
+      *   AVALIAR NECESSIADE DE OUTRO COMANDO DE ENCERRAMENTO   
+      *RELATORIOS:                                              
+      *SEMPRE GERA ALGO EXTERNO:                                
+      *TERMINATE                                                
+      *PODE RETORNAR A PROGRAMA CHAMADOR OU ENCERRAR A ROTINA                       

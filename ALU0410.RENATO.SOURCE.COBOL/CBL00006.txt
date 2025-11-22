@@ -12,23 +12,22 @@
            DECIMAL-POINT IS COMMA.                        
        DATA DIVISION.                                     
        FILE SECTION.                                      
-       WORKING-STORAGE SECTION.                           
-       77 WS-NUM1                PIC 9(1) VALUE 0.        
-       77 WS-NUM2                PIC 9(1) VALUE ZEROES.   
-       01 WS-PAGTO               PIC X VALUE 'N'.         
-         88 WS-CONF                VALUE 'S'.             
-         88 WS-PEND                VALUE 'N'.             
-       LINKAGE SECTION.                                   
-       PROCEDURE DIVISION.                                
-       MAIN-PROCEDURE.                                    
-           DISPLAY 'SITUACAO DO PAGAMENTO: ' WS-PAGTO.    
-           SET WS-CONF          TO TRUE.                  
-           DISPLAY 'NOVA SITUCAO   ' WS-PAGTO.             
-           SET WS-PEND          TO TRUE.                   
-           DISPLAY 'NOVA SITUCAO DO PAGAMENTO 2:' WS-PAGTO.
-           STOP RUN.  
-      ****************************************************                                     
-      *SET WS-TESTE TO 6 <> DIFERENTE DE MOVE 6 TO WS-TESTE
-      *LE DE FORMA INVERSA                                 
-      *SET=USADO PARA VALORES BOOLEANOS                    
-      *DEMAIS SITUACOES USAR MOVE                          
+       WORKING-STORAGE SECTION.                             
+       01 WS-PAGTO               PIC X VALUE 'N'.           
+         88 WS-CONF                VALUE 'S'.               
+         88 WS-PEND                VALUE 'N'.               
+       LINKAGE SECTION.                                     
+       PROCEDURE DIVISION.                                  
+       MAIN-PROCEDURE.                                      
+           DISPLAY 'SITUACAO DO PAGAMENTO: ' WS-PAGTO.      
+           SET WS-CONF          TO TRUE.                    
+           DISPLAY 'NOVA SITUCAO   ' WS-PAGTO.              
+           SET WS-PEND          TO TRUE.                    
+           DISPLAY 'NOVA SITUCAO DO PAGAMENTO 2:' WS-PAGTO. 
+           SET WS-NUM1 TO 2.                                
+           SET WS-NUM2 TO 3.                                
+      ****************************************************  
+      *SET WS-TESTE TO 6 <> DIFERENTE DE MOVE 6 TO WS-TESTE 
+      *LE DE FORMA INVERSA                                  
+      *SET=USADO PARA VALORES BOOLEANOS                     
+      *DEMAIS SITUACOES USAR MOVE                           

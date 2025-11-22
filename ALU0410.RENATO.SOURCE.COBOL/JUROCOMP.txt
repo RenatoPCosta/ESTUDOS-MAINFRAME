@@ -1,0 +1,33 @@
+      ****************************************************        
+      *AUTHOR: RENATO COSTA                                       
+      *DATE  : 19/11/2025                                         
+      *MOTIVO: CONSULTA TAXA DE JUROS COMPOSTOS                   
+      *PROG  : JUROCOMP                                           
+      ****************************************************        
+       IDENTIFICATION DIVISION.                                   
+       PROGRAM-ID. JUROCOMP.                                      
+       ENVIRONMENT DIVISION.                                      
+       CONFIGURATION SECTION.                                     
+       SPECIAL-NAMES.                                             
+           DECIMAL-POINT IS COMMA.                                
+       DATA DIVISION.                                             
+       FILE SECTION.                                              
+       WORKING-STORAGE SECTION.                                   
+        77 WS-MONTANTE-M                PIC 9(5)V99 VALUE 3000.   
+        77 WS-CAPITAL-C                 PIC 9(5)V99 VALUE 2000.   
+        77 WS-TAXA-I                    PIC 9(5)V99 VALUE ZEROES. 
+        77 WS-TEMPO-T-A-M               PIC 9(2)    VALUE 5.      
+        77 WS-TEMP                      PIC 9(5)V99 VALUE ZEROES. 
+       PROCEDURE DIVISION.                                        
+       MAIN-PROCEDURE.                                            
+           DISPLAY 'FORMULA M=C.(1.I)**T'.                            
+      ******** TEMP =  M / C.(1.I)**T'.                               
+           COMPUTE WS-TEMP = WS-MONTANTE-M / WS-CAPITAL-C.            
+           DISPLAY 'TEMP =  M / C: '  WS-TEMP.                        
+      ******** TEMP_A = RAIZ DE TEMP:                                 
+           COMPUTE WS-TEMP = FUNCTION EXP(                            
+                             FUNCTION LOG(WS-TEMP) / WS-TEMPO-T-A-M ).
+           DISPLAY 'TEMP = RAIZ DE TEMP: ' WS-TEMP.                   
+      ******** TEMP_A = (TEMP_A - 1) * 100 WS-TEMP_A..                
+           COMPUTE WS-TEMP = (WS-TEMP - 1) * 100.                     
+           DISPLAY 'RESULTADO: ' WS-TEMP '% DE TAXA'.                 

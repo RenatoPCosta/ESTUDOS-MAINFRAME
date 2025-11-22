@@ -1,0 +1,40 @@
+      ****************************************************
+      *AUTHOR: RENATO COSTA                               
+      *DATE  : 11/04/2024                                 
+      *MOTIVO: LENGTHT (TRATATIVA DE CARACTERES)          
+      *PROG  : CBL00015.                                  
+      ****************************************************
+       IDENTIFICATION DIVISION.                           
+       PROGRAM-ID. CBL00015.                              
+       ENVIRONMENT DIVISION.                              
+       CONFIGURATION SECTION.                             
+       SPECIAL-NAMES.                                     
+           DECIMAL-POINT IS COMMA.                        
+       DATA DIVISION.                                     
+       FILE SECTION.                                      
+       WORKING-STORAGE SECTION.                           
+       77 WS-TESTE          PIC 99 VALUE 99.              
+       01 WS-ENDERECO.                                    
+         02 WS-P1         PIC X(20).                      
+         02 WS-P2         PIC X(20).                      
+         02 WS-P3         PIC X(20).                      
+       LINKAGE SECTION.                                   
+       PROCEDURE DIVISION.                                
+       MAIN-PROCEDURE.                                    
+      ******************************TESTE_1               
+            DISPLAY 'TESTE 1: '                           
+                           LENGTH OF WS-ENDERECO.                
+      ******************************TESTE_2                      
+            COMPUTE WS-TESTE = FUNCTION LENGTH(WS-ENDERECO) + 5. 
+            DISPLAY 'TESTE 2: ' WS-TESTE.                        
+      ******************************TESTE_3                      
+            COMPUTE WS-TESTE =                                   
+                             FUNCTION LENGTH(WS-ENDERECO).       
+            DISPLAY 'TESTE 3: ' LENGTH OF WS-ENDERECO.           
+      ******************************TESTE_4                      
+            MOVE 99 TO WS-TESTE.                                 
+            DISPLAY 'TESTE 4 ' WS-TESTE.                         
+            COMPUTE WS-TESTE =                                   
+                 FUNCTION LENGTH(WS-ENDERECO) + 1.               
+            DISPLAY 'TESTE 5 ' WS-TESTE.                         
+            GOBACK.                                              

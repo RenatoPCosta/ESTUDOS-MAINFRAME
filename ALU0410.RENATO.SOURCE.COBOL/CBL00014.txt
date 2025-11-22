@@ -1,0 +1,32 @@
+      **************************************************** 
+      *AUTHOR: RENATO COSTA                                
+      *DATE  : 27/11/2023                                  
+      *MOTIVO: ON SIZE ERROR                               
+      *PROG  : CBL00014.                                   
+      **************************************************** 
+       IDENTIFICATION DIVISION.                            
+       PROGRAM-ID. CBL00014.                               
+       ENVIRONMENT DIVISION.                               
+       CONFIGURATION SECTION.                              
+       DATA DIVISION.                                      
+       FILE SECTION.                                       
+       WORKING-STORAGE SECTION.                            
+       77 WS-NUM-A           PIC 9(02) VALUE 98.           
+       77 WS-NUM-B           PIC 9(02) VALUE 99.           
+       PROCEDURE DIVISION.                                 
+       MAIN-PROCEDURE.                                     
+            DISPLAY 'VALOR INICIAL A: ' WS-NUM-A.            
+            DISPLAY 'VALOR INICIAL B: ' WS-NUM-B.            
+      *******************************************************
+            COMPUTE WS-NUM-A = WS-NUM-A + 1                  
+                     ON SIZE ERROR PERFORM ERROR-PROCEDURE.  
+            DISPLAY 'VALOR FINAL: ' WS-NUM-A.                
+      **********                                             
+            COMPUTE WS-NUM-B = WS-NUM-B + 1                  
+                     ON SIZE ERROR PERFORM ERROR-PROCEDURE.  
+            DISPLAY 'VALOR FINAL: ' WS-NUM-B.                
+      **********                                             
+            GOBACK.                                          
+      *******************************************************
+       ERROR-PROCEDURE.                                      
+            DISPLAY 'ERRO  DE TAMANHO DE VARIAVEL'.          
