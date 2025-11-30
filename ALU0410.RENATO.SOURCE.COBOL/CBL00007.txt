@@ -1,54 +1,119 @@
-      ****************************************************      
-      *AUTHOR: RENATO COSTA                                     
-      *DATE  : 01/12/2023                                       
-      *MOTIVO: COMANDO PERFORM PARA USO DE SECTIONS E PARAGRAFOS
-      *PROG  : CBL00007.                                        
-      ****************************************************      
-       IDENTIFICATION DIVISION.                                 
-       PROGRAM-ID. CBL00007.                                    
-       ENVIRONMENT DIVISION.                                    
-       CONFIGURATION SECTION.                                   
-       SPECIAL-NAMES.                                           
-           DECIMAL-POINT IS COMMA.                              
-       DATA DIVISION.                                           
-       FILE SECTION.                                            
-       WORKING-STORAGE SECTION.                                 
-       77 WS-TESTE                  PIC 9(02) VALUE ZEROES.     
-       LINKAGE SECTION.                                         
-       PROCEDURE DIVISION.                                      
-       MAIN SECTION.                                            
-       MAIN-PROCEDURE.                                          
-      *EXEMPLO IN-LINE                                          
-           PERFORM                                              
-               ADD 5 TO WS-TESTE                                
-               DISPLAY WS-TESTE                                 
-           END-PERFORM.                                         
-      *EXEMPLO OUT-LINE                        
-           PERFORM P1-INICIO    THRU  P1-FIM.  
-           PERFORM P0-INICIO    THRU  P0-FIM.  
-           PERFORM P4-INICIO    THRU  P4-FIM.  
-           PERFORM S2.                         
-      *SECTIONS                                
-      *   DEFINE SECAO 1                       
-       S1 SECTION.                             
-      *________________________                
-       P0-INICIO.                              
-           DISPLAY 'OP 0'.                     
-       P0-FIM.                                 
-           CONTINUE.                           
-       P1-INICIO.                              
-           DISPLAY 'OP 1'.                     
-       P1-FIM.                                 
-           CONTINUE.                           
-      *************************                
-       S2 SECTION.                             
-      *________________________                
-       P4-INICIO.                              
-             DISPLAY 'OP 3'.                   
-       P4-FIM.                                 
-             CONTINUE.                         
-             STOP RUN.     
+      ****************************************************              
+      *AUTHOR: RENATO COSTA                                             
+      *DATE  : 01/12/2023                                               
+      *MOTIVO: PERFORM PARA USO DE SECTIONS E PARAGRAFOS - REPETICOES   
+      *PROG  : CBL00007.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00007.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       SPECIAL-NAMES.                                                   
+           DECIMAL-POINT IS COMMA.                                      
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       WORKING-STORAGE SECTION.                                         
+       77 WS-CONTAR               PIC 99 VALUE ZEROES.                  
+       77 WS-COND                 PIC 99 VALUE 5.                       
+      ***********************************                               
+       77 WS-TESTE                  PIC 9(02) VALUE ZEROES.             
+                                                                        
+       77 WS-NUM                    PIC 9(02) VALUE 10.                 
+       77 WS-RES                    PIC 9(02) VALUE ZEROES.             
+       77 WS-CONT                   PIC 9(02) VALUE 1.                  
+       LINKAGE SECTION.                                                 
+       PROCEDURE DIVISION.                                              
+       MAIN SECTION.                                                    
+       MAIN-PROCEDURE.                                                  
+      *EXEMPLO IN-LINE                                                  
+           PERFORM                                                      
+               ADD 5 TO WS-TESTE                                        
+               DISPLAY WS-TESTE                                         
+           END-PERFORM.                                                 
+      *FORMA 1                                                          
+            PERFORM VARYING WS-CONTAR FROM 1 BY 2 UNTIL                 
+                       WS-CONTAR GREATER THAN WS-COND                   
+                DISPLAY 'FORMA 1: ' WS-CONTAR                           
+            END-PERFORM                                                 
+      **************************************                            
+      *FORMA 2 - TESTAR ATE ENCONTRAR                                   
+            INITIALIZE WS-CONTAR                                        
+            PERFORM WITH TEST AFTER UNTIL                               
+                       WS-CONTAR EQUAL WS-COND                          
+                ADD 1 TO WS-CONTAR                                      
+                DISPLAY 'FORMA 2: ' WS-CONTAR                           
+            END-PERFORM                                                 
+      **************************************                            
+      *FORMA 3 - FAZER ENQUANTO                                         
+            INITIALIZE WS-CONTAR                                        
+            PERFORM WITH TEST BEFORE UNTIL                              
+                       WS-CONTAR GREATER THAN WS-COND                   
+                ADD 1 TO WS-CONTAR                                      
+                DISPLAY 'FORMA 2: ' WS-CONTAR                           
+            END-PERFORM                                                 
+      **************************************                            
+      *EXEMPLO OUT-LINE                                                 
+           PERFORM P1-INICIO    THRU  P1-FIM.                           
+           PERFORM P0-INICIO    THRU  P0-FIM 5 TIMES.                   
+           PERFORM P4-INICIO    THRU  P4-END                            
+                  VARYING WS-CONT FROM 1 BY 1 UNTIL WS-CONT = 11.       
+           PERFORM S2.                                                  
+      *SECTIONS                                                         
+      *   DEFINE SECAO 1                                                
+       S1 SECTION.                                                      
+      *________________________                                         
+       P0-INICIO.                                                       
+           DISPLAY 'TABOADA TESTE'.                                     
+           MULTIPLY WS-NUM BY WS-CONT GIVING WS-RES.                    
+           DISPLAY 'VALOR: ' WS-NUM ' X ' WS-CONT ' =  ' WS-RES.        
+            ADD 1 TO WS-CONT.                                           
+       P0-FIM.                                                          
+           CONTINUE.                                                    
+       P1-INICIO.                                                       
+           DISPLAY 'OP 1'.                                              
+       P1-FIM.                                                          
+           CONTINUE.                                                    
+      *************************                                         
+       S2 SECTION.                                                      
+      *________________________                                         
+       P4-INICIO.                                                       
+             DISPLAY 'OP 3'.                                            
+             EXIT.                                                      
+       P4-END.                                                          
+       P4-FIM.                                                          
+             DISPLAY ' TESTE'                                           
+             CONTINUE.                                                  
+             STOP RUN.                                                  
       **********************************************                    
       *SECTION = UMA SECAO QUE PODE CONTER PARAGRAFOS                   
       *O DEFINIR UMA SECTION VOCE PODE USAR O COMANDO PERFORME PARA ->  
-      *EXECUTAR MAIS DE UM PARAGRADO POR VEZ                                                
+      *EXECUTAR MAIS DE UM PARAGRADO POR VEZ                            
+      *************************************************************     
+      *GO TO: UMA ALTERNATIVA AO PERFORM, POREM NAO RETORNA AO CHAMADOR 
+      *-PARA NAO FICAR PRESO NO CODIGO CHAMADO, PODE SER NECESSARIO USAR
+      *-OUTRO  GO TO                                                    
+      *************************************************************     
+      *************************************************************     
+      *PERFORM TIMES                                                    
+      * COM VARIAVEL OU VALOR DEFINIDO                                  
+      *******************                                               
+      *PERFORM VARYNG                                                   
+      *******************                                               
+      *PERFORM UNTIL   -QUANDO LOCALIZA A CONDICAO DE PARADA NAO EXECU- 
+      *                 TA, EX: FINAL DO ARQUIVO LIDO OU NUMERO DEFINIDO
+      *                                                  MAIS 1         
+      *NAO INCREMENTA DE FORMA AUTOMATICA, APENAS MANUAL                
+      *EX1:                                                             
+      * DISPLAY RESULTADO UNTIL V1 > 10                                 
+      *         ADD 1 TO V1                                             
+      **********                                                        
+      *EX2:                                                             
+      *******************                                               
+      * USAR O COMANDO EXIT AO FINAL DOS PARAGRAFOS                     
+      * NO COBOL, CONTINUE E UMA INSTRUCAO NEUTRA QUE NAO FAZ NADA ALEM 
+      * DE PASSAR O CONTROLE PARA A PROXIMA LINHA DE CODIGO. JA O EXIT E
+      * USADO COMO MARCADOR DE TERMINO EM PARAGRAFOS OU PROCEDIMENTOS,  
+      * ESPECIALMENTE EM ESTRUTURAS COMO PERFORM THRU , INDICANDO O FIM 
+      * E UM BLOCO DE EXECUCAO                                          
+
+      *   PERFORM UNTIL WS-FILE-STATUS = "10"                           

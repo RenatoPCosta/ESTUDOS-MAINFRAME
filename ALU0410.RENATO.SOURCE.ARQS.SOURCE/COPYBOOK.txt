@@ -1,0 +1,5 @@
+           01 ENTRADA-CLIENTES.                                         
+              05 FD-NOME-CLIENTE      PIC X(30).                        
+              05 FD-AGENCIA           PIC X(05).                        
+              05 FD-VALOR-DEPOSITO    PIC 9(10).                        
+              05 FD-FILLER            PIC X(35).                        

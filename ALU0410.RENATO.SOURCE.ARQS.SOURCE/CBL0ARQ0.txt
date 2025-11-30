@@ -1,0 +1,49 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID CBL0ARQ0.                                             
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       SPECIAL-NAMES.                                                   
+           DECIMAL-POINT IS COMMA.                                      
+       INPUT-OUTPUT SECTION.                                            
+       FILE-CONTROL.                                                    
+            SELECT ENTRADA ASSIGN TO UT-S-ENTRADAJ.                     
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       FD ENTRADA                                                       
+           LABEL RECORDS ARE STANDARD                                   
+           RECORD CONTAINS 80 CHARACTERS                                
+           BLOCK  CONTAINS  0 RECORDS                                   
+           DATA RECORD IS ENTRADA.                                      
+       01 ENTRADA-CLIENTES.                                             
+          05 FD-NOME-CLIENTE      PIC X(30).                            
+          05 FD-AGENCIA           PIC X(05).                            
+          05 FD-VALOR-DEPOSITO    PIC 9(10).                            
+          05 FD-FILLER            PIC X(35).                            
+       WORKING-STORAGE SECTION.                                         
+       77 WS-STATUS               PIC A(01) VALUE 'N'.                  
+       LINKAGE SECTION.                                                 
+       PROCEDURE DIVISION.                                              
+       0001-MAIN.                                                       
+           PERFORM 0010-ABRIRARQ.                                       
+           PERFORM 0020-PROCESSA UNTIL WS-STATUS = 'S'                  
+           CLOSE ENTRADA.                                               
+           GOBACK.                                                      
+       0010-ABRIRARQ.                                                   
+           OPEN INPUT ENTRADA.                                          
+           READ ENTRADA AT END                                          
+                               MOVE 'S' TO WS-STATUS.                   
+      *                        MOVE EM CASO DE FINAL DE ARQUIVO         
+              IF WS-STATUS = 'S' THEN                                   
+      *                        SE A PRIMEIRA LINHA FOR O FINAL          
+                 DISPLAY 'ARQUIVO EM BRANCO'                            
+           GOBACK.                                                      
+       0020-PROCESSA.                                                   
+                                                                        
+           DISPLAY 'NOME    :' FD-NOME-CLIENTE                          
+           DISPLAY 'AGENCIA :' FD-AGENCIA                               
+           DISPLAY 'DEPOSITO: R$ ' FD-VALOR-DEPOSITO                    
+           DISPLAY '*****************************************'.         
+           READ ENTRADA AT END                                          
+                               MOVE 'S' TO WS-STATUS                    
+           GOBACK.                                                      
+                                                                        

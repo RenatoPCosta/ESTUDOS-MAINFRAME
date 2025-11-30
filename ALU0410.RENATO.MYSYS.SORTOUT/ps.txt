@@ -1,0 +1,27 @@
+BIG BOSS                DIAMOND DOGS DEPOT    PAGO                      
+BIG BOSS                FOXHOUND ARMORY       PAGO                      
+BIG BOSS                OUTER HEAVEN SUPPLY   PAGO                      
+CARL JOHNSON            AMMU-NATION           VENCIDO                   
+CARL JOHNSON            GROVE STREET MARKET   EM ABERTO                 
+CARL JOHNSON            LOWRIDER GARAGE       VENCIDO                   
+CLOUD STRIFE            BUSTER BLADE DEPOT    EM ABERTO                 
+CLOUD STRIFE            MIDGAR MARKET         PAGO                      
+CLOUD STRIFE            SHINRA SUPPLY CO.     VENCIDO                   
+GERALT OF RIVIA         KAER MORHEN FORGE     EM ABERTO                 
+GERALT OF RIVIA         MONSTER PARTS MARKET  VENCIDO                   
+GERALT OF RIVIA         WITCHER S WARES       PAGO                      
+KRATOS                  BLADESMITH'S VAULT    VENCIDO                   
+KRATOS                  OLYMPUS FORGE         PAGO                      
+KRATOS                  SPARTAN ARMORY        EM ABERTO                 
+LARA CROFT              CRYSTAL GEAR SHOP     EM ABERTO                 
+LARA CROFT              RELIC EMPORIUM        PAGO                      
+LARA CROFT              TOMB RAIDER STORE     PAGO                      
+MARIO                   FIRE FLOWER OUTLET    EM ABERTO                 
+MARIO                   MUSHROOM MARKET       PAGO                      
+MARIO                   STAR POWER PLAZA      EM ABERTO                 
+SAMUS ARAN              CHOZO TECH HUB        VENCIDO                   
+SAMUS ARAN              GALACTIC GEAR         EM ABERTO                 
+SAMUS ARAN              METROID SUPPLIES      EM ABERTO                 
+SONIC                   CHAOS CRYSTAL SHOP    VENCIDO                   
+SONIC                   EMERALD MALL          PAGO                      
+SONIC                   SPEED GEAR OUTLET     EM ABERTO                 

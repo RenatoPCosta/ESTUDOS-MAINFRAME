@@ -1,0 +1,9 @@
+CBL00002 TESTE P1 INICIO                                                
+RUA ONDE MORO            FRANCO DA ROCHA                                
+RENATO COSTA                                                            
+28                                                                      
+O RESUTADO:  80                                                         
+1                                                                       
+0                                                                       
+CBL00002 TESTE P1 FINAL COM SUCESSO                                     
+**********************************                                      

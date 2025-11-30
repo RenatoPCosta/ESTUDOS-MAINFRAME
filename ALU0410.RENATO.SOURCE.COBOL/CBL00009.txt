@@ -18,15 +18,18 @@
        LINKAGE SECTION.                                                
        PROCEDURE DIVISION.                                             
        MAIN-PROCEDURE.                                                 
-           COMPUTE WS-NUM1 = 5 ** 5.                                   
+           COMPUTE WS-NUM1 = (5 ** 5)                                  
+                             + 1                                       
+           END-COMPUTE.                                                
+           DISPLAY 'COMPUTE DE DUAS LINHAS: ' WS-NUM1                  
            COMPUTE WS-NUM1 = WS-NUM1 / 15.                             
            DISPLAY 'RESULTADO: ' WS-NUM1.                              
            COMPUTE WS-NUM1 = (WS-NUM1 + 12 * (WS-NUM1 - 1)) ** 2.      
-           DISPLAY 'RESULTADO: ' WS-NUM1.        
-           MOVE 10 TO WS-NUM2.                              
-           COMPUTE WS-NUM2 = (WS-NUM1 + WS-NUM2) / 2.       
-           DISPLAY 'FINAL: ' WS-NUM2.                       
-            STOP RUN.                                       
+           DISPLAY 'RESULTADO: ' WS-NUM1.                              
+           MOVE 10 TO WS-NUM2.                                         
+           COMPUTE WS-NUM2 = (WS-NUM1 + WS-NUM2) / 2.                  
+           DISPLAY 'FINAL: ' WS-NUM2.                                  
+            STOP RUN.                                                                                     
       *                                                     
       * SOMA            +                                   
       * SUBTRCAO        -                                   

@@ -38,3 +38,31 @@
 *//TOOLMSG DD SYSOUT=*  
 *//DFSMSG DD SYSOUT=*   
 *//TOOLIN DD*           
+                                                                        
+**************************************************                      
+*COPY                                                                   
+*                                                                       
+*--REALIZA A COPIA DE UM DATASET PARA OUTRO OBEDECENDO AS FENICICOES    
+*--DE UM CONTROLE                                                       
+*                                                                       
+*EX:                                            )                       
+*     COPY FROM(CAMINHO1) TO(CAMINHO2) USING(CTL1)                      
+*   //CTL1CNTL DD *                                                     
+*     INCLUDE COND=(39,1,CH,EQ,C'C')                                    
+*                                                                       
+* **ONDE:                                                               
+*    CTL1 DEFINE AS REGRAS PARA COPIA (NOME NAO FIXO)                   
+*                                                                       
+*    OUTROS EXEMPLOS:                                                   
+*                                                                       
+*    COPY FROM(CAMINHO1) TO(CAMINHO2,CAMINHO3) USING(CTL1)              
+*           SAIDA COM DOIS DD'S                                         
+*                                                                       
+*    COPY FROM(VSAM1) TO(VSAM2) VSAMTYPE(V)                             
+*                               PODE SER V OU F                         
+*                                                                       
+*                                                                       
+*                                                                       
+*                                                                       
+                                                                        
+                                                                        

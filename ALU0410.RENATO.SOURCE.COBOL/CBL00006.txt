@@ -23,9 +23,7 @@
            SET WS-CONF          TO TRUE.                    
            DISPLAY 'NOVA SITUCAO   ' WS-PAGTO.              
            SET WS-PEND          TO TRUE.                    
-           DISPLAY 'NOVA SITUCAO DO PAGAMENTO 2:' WS-PAGTO. 
-           SET WS-NUM1 TO 2.                                
-           SET WS-NUM2 TO 3.                                
+           DISPLAY 'NOVA SITUCAO DO PAGAMENTO 2:' WS-PAGTO.                                
       ****************************************************  
       *SET WS-TESTE TO 6 <> DIFERENTE DE MOVE 6 TO WS-TESTE 
       *LE DE FORMA INVERSA                                  

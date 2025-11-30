@@ -18,18 +18,20 @@
        MAIN-PROCEDURE.                                    
             DISPLAY 'OI MUNDO'                            
             STOP RUN.                 
-      ************COMANDOS DE ENCERRAMENTO************          
-      *PROGRAMAS:                                               
-      *RETORNOS DIFERENTES, NEM SEMPRE EXTERNO                  
-      *PROGRAMA PRINCIAL                                        
-      *STOP RUN -  RETORNA AO SISTEMA OPORACIONAL               
-      *GOBACK   -  RETORNA AO CHAMADOR (SO)                     
-      *PROGRAMA SUBPROGRAMA/SUB-ROTINA/MÓDULO:                  
-      *GOBACK   -  RETORNA AO CHAMADOR, MELHOR PARA CICS BATCH  
-      *EXIT PROGRAM - APENAS SUB-PRORAMAS, VOLTA AO CHAMADOR    
-      **CANCEL - ABORTA O PROCESSAMENTO DO SUBPROGRAMA, ANULA   
-      *   AVALIAR NECESSIADE DE OUTRO COMANDO DE ENCERRAMENTO   
-      *RELATORIOS:                                              
-      *SEMPRE GERA ALGO EXTERNO:                                
-      *TERMINATE                                                
-      *PODE RETORNAR A PROGRAMA CHAMADOR OU ENCERRAR A ROTINA                       
+      ************COMANDOS DE ENCERRAMENTO************                  
+      *PROGRAMAS:                                                       
+      *RETORNOS DIFERENTES, NEM SEMPRE EXTERNO                          
+      *                                                                 
+      *PROGRAMA PRINCIAL                                                
+      *STOP RUN -  RETORNA AO SISTEMA OPORACIONAL                       
+      *GOBACK   -  RETORNA AO CHAMADOR (SO)                             
+      *                                                                 
+      *PROGRAMA SUBPROGRAMA/SUB-ROTINA/MÓDULO:                          
+      *GOBACK   -  RETORNA AO CHAMADOR, MELHOR PARA CICS BATCH          
+      *EXIT PROGRAM - APENAS SUB-PRORAMAS, VOLTA AO CHAMADOR            
+      **CANCEL - ABORTA O PROCESSAMENTO DO SUBPROGRAMA, ANULA           
+      *   AVALIAR NECESSIADE DE OUTRO COMANDO DE ENCERRAMENTO           
+      *RELATORIOS:                                                      
+      *SEMPRE GERA ALGO EXTERNO:                                        
+      *TERMINATE                                                        
+      *PODE RETORNAR A PROGRAMA CHAMADOR OU ENCERRAR A ROTINA                    

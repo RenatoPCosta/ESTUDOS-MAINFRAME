@@ -6,6 +6,7 @@
 //*SYSTSPRT    DD DNS=ALU0410.RENATO.************,DISP=SHR       
 //SYSTSIN     DD *                                               
 LISTDS 'ALU0410.RENATO.SOURCE.COBOL' MEMBER                      
+
 //***************************************************************
 //*O "*" FAZ ESPERAR DADOS ABAIXO DO COMANDO, COMO NOME,IDADE OU 
 //*QUALQUER INFORMACAO PARA REGISTRO;                            

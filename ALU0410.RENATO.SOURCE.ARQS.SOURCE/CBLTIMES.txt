@@ -1,0 +1,18 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID CBLTIMES.                                             
+       ENVIRONMENT DIVISION.                                            
+       INPUT-OUTPUT SECTION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       77 WS-DIA                  PIC X(08) VALUE SPACES.               
+       77 WS-HORA                 PIC X(06) VALUE SPACES.               
+       LINKAGE SECTION.                                                 
+       77 LS-DIA     PIC X(10).                                         
+       77 LS-HORA    PIC X(08).                                         
+       PROCEDURE DIVISION USING LS-DIA, LS-HORA.                        
+       MAIN-PROCEDURE.                                                  
+           ACCEPT WS-DIA FROM DATE.                                     
+           ACCEPT WS-HORA FROM TIME.                                    
+           MOVE WS-DIA TO LS-DIA.                                       
+           MOVE WS-HORA TO LS-HORA.                                     
+           GOBACK.                                                      

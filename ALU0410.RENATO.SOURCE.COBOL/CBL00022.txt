@@ -1,0 +1,31 @@
+      ****************************************************              
+      *AUTHOR: RENATO COSTA                                             
+      *DATE  : 03/09/2025                                               
+      *MOTIVO: USO DE MATRIZES BIDIMENSIONAL NAO INDEXADA               
+      *PROG  : CBL00022.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00024.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-MATRIZ-B-NI.                                               
+         03 WS-LINHAS           OCCURS 5 TIMES.                         
+           05 WS-LINHA          PIC X(06) VALUE 'LINHA'.                
+           05 WS-COLUNA         OCCURS 3 TIMES.                         
+             07 WS-CELULA       PIC X(06) VALUE 'COLUNA'.               
+                                                                        
+       77 WS-LINHA-CONT         PIC 9.                                  
+       77 WS-COLUNA-CONT        PIC 9.                                  
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+            PERFORM VARYING WS-LINHA-CONT FROM 1 BY 1 UNTIL             
+                                                 WS-LINHA-CONT > 5      
+               PERFORM VARYING WS-COLUNA-CONT FROM 1 BY 1 UNTIL         
+                                                 WS-COLUNA-CONT > 3     
+                  DISPLAY WS-CELULA (WS-LINHA-CONT, WS-COLUNA-CONT)     
+                               '-' WS-LINHA-CONT '-' WS-COLUNA-CONT     
+               END-PERFORM                                              
+            END-PERFORM                                                 
+            GOBACK.                                                     

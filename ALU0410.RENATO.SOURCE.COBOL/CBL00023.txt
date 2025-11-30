@@ -1,0 +1,31 @@
+      ****************************************************              
+      *AUTHOR: RENATO COSTA                                             
+      *DATE  : 03/09/2025                                               
+      *MOTIVO: USO DE MATRIZES BIDIMENSIONAL INDEXADA                   
+      *PROG  : CBL00023.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00023.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       WORKING-STORAGE SECTION.                                         
+       01 WS-MATRIZ-B-NI.                                               
+         03 WS-LINHAS           OCCURS 5 TIMES INDEXED BY I.            
+           05 WS-LINHA          PIC X(06) VALUE 'LINHA'.                
+           05 WS-COLUNA         OCCURS 3 TIMES INDEXED BY J.            
+             07 WS-CELULA       PIC X(06) VALUE 'LINHA'.                
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+            SET I TO 1                                                  
+            PERFORM UNTIL I > 5                                         
+               SET J TO 1                                               
+               PERFORM VARYING J FROM 1 BY 1 UNTIL J > 3                
+                  DISPLAY WS-CELULA (I, J)                              
+                  SET J UP BY 1                                         
+               END-PERFORM                                              
+               END-PERFORM                                              
+               SET I UP BY 1                                            
+            END-PERFORM.                                                
+            GOBACK.                                                     

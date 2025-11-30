@@ -1,0 +1,162 @@
+      ****************************************************             
+      *AUTHOR: RENATO COSTA                                            
+      *DATE  : 27/11/2023                                              
+      *MOTIVO: MATEMATICA ALTERNATIVA                                  
+      *PROG  : CBL00017.                                               
+      ****************************************************             
+       IDENTIFICATION DIVISION.                                        
+       PROGRAM-ID. CBL00017.                                           
+       ENVIRONMENT DIVISION.                                           
+       CONFIGURATION SECTION.                                          
+       SPECIAL-NAMES.                                                  
+           DECIMAL-POINT IS COMMA.                                     
+       DATA DIVISION.                                                  
+       FILE SECTION.                                                   
+       WORKING-STORAGE SECTION.                                        
+       77 WS-A                      PIC 9(3) VALUE ZEROS.              
+       77 WS-B                      PIC 9(3) VALUE ZEROS.              
+       77 WS-C                      PIC 9(3) VALUE ZEROS.              
+       77 WS-D                      PIC 9(3) VALUE ZEROS.              
+       77 WS-T                      PIC 9(8) VALUE ZEROS.              
+       LINKAGE SECTION.                                                
+       PROCEDURE DIVISION.                                             
+       MAIN-PROCEDURE.                                                 
+           PERFORM 0001-ADD.                                           
+           PERFORM 0002-SUBTRACT.                                      
+           PERFORM 0003-MULTIPLY.                                      
+           PERFORM 0004-DIVIDE.                                        
+           GOBACK.                                                      
+      *********************                                             
+       0001-ADD.                                                        
+      ********TESTE1(ADD)                                               
+           PERFORM 0100-INITREPLACE                                     
+           DISPLAY 'INICIO DE TESTE1(ADD): '                            
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B                      
+           ADD WS-A TO WS-B ON SIZE ERROR PERFORM 0800-SIZEERROR.       
+           DISPLAY ' ADD WS-A TO WS-B'                                  
+           DISPLAY ' VALOR A: ' WS-A                                    
+           DISPLAY ' VALOR B: ' WS-B                                    
+           DISPLAY ' '                                                  
+      ********TESTE2(ADD)                                               
+           DISPLAY 'INICIO DE TESTE2(ADD): '                            
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B ' WS-T = ' WS-T      
+           ADD WS-A WS-B WS-C WS-D GIVING WS-T ROUNDED                  
+           DISPLAY ' ADD WS-A WS-B WS-C WS-D GIVING WS-T ROUNDED'       
+           DISPLAY ' VALOR T: ' WS-T                                    
+           DISPLAY ' '                                                  
+      ********TESTE3(ADD)                                               
+           PERFORM 0100-INITREPLACE                                     
+           DISPLAY 'INICIO DE TESTE3(ADD): '                            
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B                      
+           DISPLAY ' WS-C = ' WS-C ' WS-D = ' WS-D                      
+           ADD WS-A WS-B TO WS-C WS-D                                   
+                            ON SIZE ERROR PERFORM 0800-SIZEERROR.       
+           DISPLAY ' ADD WS-A WS-B TO WS-C WS-D'                        
+           DISPLAY ' WS-C = ' WS-C ' E  WS-D = ' WS-D                   
+           DISPLAY ' '                                                  
+           DISPLAY 'FIM DO TESTE (ADD)'                                 
+      ********EXEMPLO COM CORR NO CODIGO CBL00016                       
+           DISPLAY '********************************'                   
+           EXIT.                                                        
+      *********************                                             
+       0002-SUBTRACT.                                                   
+           PERFORM 0100-INITREPLACE                                     
+           MOVE 50 TO WS-C.                                             
+           DISPLAY 'INICIO DE TESTE1(SUBTRACT): '                       
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B                      
+           DISPLAY ' WS-C = ' WS-C ' WS-T = ' WS-T                      
+           SUBTRACT WS-A WS-B FROM WS-C GIVING WS-T                     
+      *    SUBTRACT WS-A WS-B FROM WS-C WS-T                            
+      *    SUBTRACT WS-A WS-B GIVING WS-T                               
+      *    SUBTRACT    5 WS-B GIVING WS-T                               
+      *    SUBTRACT    5 FROM WS-C                                      
+           DISPLAY ' SUBTRACT WS-A WS-B FROM WS-C GIVING WS-T'          
+           DISPLAY ' VALOR A: ' WS-A                                    
+           DISPLAY ' VALOR B: ' WS-B                                    
+           DISPLAY ' VALOR C: ' WS-C                                    
+           DISPLAY ' VALOR T: ' WS-T                                    
+           DISPLAY '********************************'                   
+           EXIT.                                                        
+      *********************                                             
+       0003-MULTIPLY.                                                   
+           PERFORM 0100-INITREPLACE                                     
+           DISPLAY 'INICIO DE TESTE1(MULTIPLY): '                       
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B ' WS-T = ' WS-T      
+           MULTIPLY WS-A BY WS-B                                        
+           DISPLAY ' WS-A BY WS-B'                                      
+           DISPLAY ' VALOR A: ' WS-A                                    
+           DISPLAY ' VALOR B: ' WS-B                                    
+           DISPLAY ' '                                                  
+           DISPLAY 'INICIO DE TESTE2(MULTIPLY): '                       
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B ' WS-T = ' WS-T      
+           MULTIPLY WS-A BY WS-B GIVING WS-T                            
+           DISPLAY ' WS-A BY WS-B GIVING WS-T'                          
+           DISPLAY ' VALOR A: ' WS-A                                    
+           DISPLAY ' VALOR B: ' WS-B                                    
+           DISPLAY ' VALOR T: ' WS-T                                    
+      *    MULTIPLY 5 BY WS-C                                           
+      *    MULTIPLY 5 BY WS-C GIVING WS-T                               
+      *    NAO E POSSIVEL ENCADEAR MULTIPLICAXOES, USAR FUNC OU DOIS    
+      *                                            COMANDOS MULTIPLY    
+           DISPLAY '********************************'                   
+           EXIT.                                                        
+      *********************                                             
+       0004-DIVIDE.                                                     
+           PERFORM 0100-INITREPLACE                                     
+           DISPLAY 'INICIO DE TESTE1(DIVIDE): '                         
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B ' WS-T = ' WS-T      
+           DIVIDE WS-B INTO WS-A                                        
+           DISPLAY 'DIVIDE WS-B INTO WS-A'                              
+           DISPLAY ' VALOR A: ' WS-A                                    
+           DISPLAY ' VALOR B: ' WS-B                                    
+           DISPLAY ' '                                                  
+           PERFORM 0100-INITREPLACE                                     
+           DISPLAY 'INICIO DE TESTE2(DIVIDE): '                         
+           DISPLAY ' WS-A = ' WS-A ' WS-B = ' WS-B ' WS-T = ' WS-T      
+           DIVIDE WS-A BY WS-B GIVING WS-T                              
+           DISPLAY 'WS-A BY WS-B GIVING WS-T'                           
+           DISPLAY ' VALOR A: ' WS-A                                    
+           DISPLAY ' VALOR B: ' WS-B                                    
+           DISPLAY ' VALOR T: ' WS-T                                    
+      *    DIVIDE 10 BY 2 GIVING WS-T                                   
+      *    DIVIDE WS-T INTO 5 GIVING WS-T                               
+           EXIT.                                                        
+      *********************                                             
+       0100-INITREPLACE.                                                
+           MOVE 20 TO WS-A                                              
+           MOVE 10 TO WS-B                                              
+           MOVE  1 TO WS-C                                              
+           MOVE  5 TO WS-D                                              
+           MOVE  0 TO WS-T                                              
+           EXIT.                                                        
+       0800-SIZEERROR.                                                  
+           DISPLAY 'VALOR MAIOR QUE O CAMPO NUMERICO(SIZE ERROR)'       
+           GOBACK.                                                      
+      ******************************************************************
+      *    COMANDO ADD -> SOMA - INCREMENTO - UTILIZADO PARA LITERAIS   
+      * ADD V1 V2  TO R1 R2   // ADD V1 V2 V3 GIVING R1 ROUNDED         
+      * ADD CORR V1 TO R1                                               
+      *******************************                                   
+      *    COMANDO SUBTRACT -> SUBTRAIR                                 
+      * SUBTRACT V1 V2 FROM R1 R2  //                                   
+      * SUBTRACT V1 V2 FROM R1   GIVIND  R2  //                         
+      * SUBTRACT CORR V1 TO R1                                          
+      *******************************                                   
+      *    COMANDO MULTIPLY -> MULTIPLICAR                              
+      * MULTIPLY V1 BY V2                                               
+      * MULTIPLY V1 BY V2 GIVING R1                                     
+      *******************************                                   
+      *    COMANDO DIVIDE -> DIVIDIR                                    
+      * DIVIDE V2 INTO V1                                               
+      * DIVIDE V1 BY INTO V2 GIVING R1                                  
+      *******************************                                   
+      *    COMANDO COMPUTE -> INDICA EXPRESSAO ARITIMETICA              
+      ******************************************************************
+      *    COMANDO ROUNDED ->ARREDONDA PARA CIMA OU BAIXO, DEPENDE DO --
+      *                                                    _VALOR       
+      ******************************************************************
+      * POSSIBILIDADE DE USO DE CORR PARA CALCULAR GRUPOS DE VARIAVEIS  
+      *                                      CORR EM CBL00016           
+      ******************************************************************
+      *END-ADD  END-SUBTRACT  END-MULTIPLY  AND-DIVIDE  END-COMPUT      
+      *                                                                 

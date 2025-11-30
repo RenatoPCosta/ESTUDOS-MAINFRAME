@@ -1,4 +1,4 @@
-//ICESORT1 JOB ICESORT1,CLASS=A,MSGCLASS=C,MSGLEVEL=(1,1),NOTIFY=ALU0410
+//ICESORT1 JOB ICESORT1,CLASS=A,MSGCLASS=C,MSGLEVEL=(1,1)               
 //STEP1    EXEC PGM=ICETOOL                                             
 //TOOLMSG  DD SYSOUT=*                                                  
 //DFSMSG   DD SYSOUT=*                                                  
@@ -10,4 +10,3 @@ REGSTRO2****NOME2
  COPY FROM(INPUT) TO(OUTPUT) USING(SORT)                                
 //SORTCNTL DD *                                                         
   INCLUDE COND=(1,8,CH,EQ,C'REGSTRO1')                                  
-  OUTFIL  FNAMES=SAIDA,BUILD=(5,5)

@@ -1,0 +1,66 @@
+      ****************************************************              
+      *AUTHOR: RENATO COSTA                                             
+      *DATE  : 19/04/2024                                               
+      *MOTIVO: CORR                                                     
+      *PROG  : CBL00016.                                                
+      ****************************************************              
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. CBL00016.                                            
+       ENVIRONMENT DIVISION.                                            
+       CONFIGURATION SECTION.                                           
+       SPECIAL-NAMES.                                                   
+           DECIMAL-POINT IS COMMA.                                      
+       DATA DIVISION.                                                   
+       FILE SECTION.                                                    
+       WORKING-STORAGE SECTION.                                         
+       01 WS-LAYOUT-1.                                                  
+          05 WS-CARGO            PIC X(20).                             
+          05 WS-SAIDA            PIC X(05).                             
+          05 WS-NOME             PIC X(20).                             
+       01 WS-LAYOUT-2.                                                  
+          05 WS-NOME             PIC X(15).                             
+          05 WS-SAIDA-2          PIC X(05).                             
+          05 WS-CARGO            PIC X(15).                             
+      ***********************                                           
+       01 WS-CONJUNTO1.                                                 
+          05 WS-N1               PIC 9(02) VALUE 5.                     
+          05 WS-N2               PIC 9(02) VALUE 5.                     
+       01 WS-CONJUNTO2.                                                 
+          05 WS-N1               PIC 9(02) VALUE 5.                     
+          05 WS-N2               PIC 9(02) VALUE 5.                     
+       PROCEDURE DIVISION.                                              
+       MAIN-PROCEDURE.                                                  
+            MOVE 'ANALISTA'     TO WS-CARGO OF WS-LAYOUT-1.             
+            MOVE 'SAIDA'        TO WS-SAIDA.                            
+            MOVE 'RENATO COSTA' TO WS-NOME  OF WS-LAYOUT-1.             
+                                                                        
+            MOVE CORR WS-LAYOUT-1 TO WS-LAYOUT-2.                       
+            DISPLAY WS-LAYOUT-1.                                        
+            DISPLAY WS-LAYOUT-2.                                        
+      ******************************************************            
+      *EXEMPLO COM ADD CORR - INCREMENTO                                
+            ADD CORR WS-CONJUNTO1 TO WS-CONJUNTO2                       
+            COMPUTE  WS-N1 OF WS-CONJUNTO2 =                            
+                     WS-N1 OF WS-CONJUNTO1 + WS-N1 OF WS-CONJUNTO2      
+            DISPLAY WS-CONJUNTO1                                        
+            DISPLAY WS-CONJUNTO2                                        
+            GOBACK.                                                     
+      *CASO AS VARIAVEIS TENHAM O MESMO ESPACO E ORDEM, PODE USAR MOVE  
+      * TOMAR CUIDADO PARA EVITAR PERDA DE DADOS                        
+      *****                                                             
+      *CASO TENHA TAMANHO DIFERENTE, USAR CORR - LEVA EM CONSIDERACAO O 
+      * NOME DA VARIAVEL, NAO O TAMANHO                                 
+      * TOMAR CUIDADO PARA EVITAR PERDA DE DADOS                        
+      *     --NO EXEMPLO  WS-SAIDA  E WS-SAIDA-2, O COMANDO CORR IGNORA 
+      *                   E NAO FAZ A MOVIMENTACAO. NAS DEMAIS MUDA A   
+      *                   ORDEM CONFORME A DEFINICAO DE ORDEM DO NV 05  
+      *                        ***OU SEJA, PODE MUDAR O LAYOUT.         
+      *                                                                 
+      *                                                                 
+      *                                                                 
+      *ADD CORR (ADD CORRESPONDING) S  FUNCIONA COM GRUPOS (NíVEIS 01,  
+      *02, ETC.), NUNCA COM ITENS ESCALARES INDIVIDUAIS                 
+      *                                                                 
+      * NESSE CASO, PARA SOMAS USAR O COMPUTE                           
+      *                                                                 
+      *                                                                 
