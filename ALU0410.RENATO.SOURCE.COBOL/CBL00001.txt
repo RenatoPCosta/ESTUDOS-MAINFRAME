@@ -15,6 +15,5 @@
        WORKING-STORAGE SECTION.                           
        LINKAGE SECTION.                                   
        PROCEDURE DIVISION.                                
-       MAIN-PROCEDURE.                                    
-            DISPLAY 'OI MUNDO'                            
-            STOP RUN.                                     
+       MAIN-PROCEDURE.                                                               
+            GOBACK.                                     

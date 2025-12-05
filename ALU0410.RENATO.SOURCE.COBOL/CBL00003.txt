@@ -83,7 +83,24 @@
       *        DISPLAY DO NIVEL 66                                  
                MOVE 1997 TO  WS-ANO-AMD.                            
                DISPLAY WS-DMAR.                                     
-           GOBACK.                                                  
+           GOBACK.     
+      ********************************************                      
+      *O COMP FUNCIONA DE FORMA QUE COMPRIME O HEXADECIMAL PARA USO     
+      *DE SOMENTE OS 4 ULTIMOS BITS, SENDO OS 4 PRIMEIROS ZONADOS       
+      *DE FORMA NEUTRA (F) EX: F4 -> 4                                  
+      *--NA PASSAGEM DE VARIAVEL EXTERNA NAO USA COMP, DEVE SER UTILIZA-
+      *-DA DENTRO DO PROGRAMA (DURANTE EXECUCAO DE CALCULOS E REPRESEN- 
+      *TACAO  (AVALIAR SE EH POSSIVEL USAR UM ARQUIVO COMPRIMIDO JA EM  
+      *                       HEXADECIMAL PARA 4 BITS DE REPRESENTACAO) 
+      ********************************************                      
+      *MASCARA                                                          
+      *                                                                 
+      *NO JCL  = 0050                                                   
+      *NA VARL = 0050   ->PIC 9(2)V99. -                                
+      *NA MASC =  0,50   ->PIC Z9,99.   -PRECISA DE MOVE PARA APRESENTAR
+      *                                                                 
+      *   USAR VARIAVEIS DE MESMO TAMANHO PARA EVITAR PERDA DE DADOS 
+      *                                          
       *MASCARAS                                                         
       *                                                                 
       *    PIC 999.999.999,99                                           
