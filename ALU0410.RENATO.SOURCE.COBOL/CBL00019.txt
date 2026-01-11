@@ -1,36 +1,84 @@
-IF COND  THEN
-   XXXX
-ELSE IF COND2 THEN
-   XXXX
-ELSE
-   XXXX
-END-IF
-**********************************
->      GREATER THAN
-<      LESS THAN
-=      IQUAL TO
-NOT>   LESS THAN OR EQUAL
-NOT<   GREATER THAN OR EQUAL
-NOT=   NOT EQUAL TO
-**********************************
-IF IDENFICADOR IS NUMERIC THEN
-    IF IDENFICADOR IS POSITIVE
-    IF IDENFICADOR IS NOT NEFATIVE THEN
-    IF IDENFICADOR IS ZERO THEN
-    XXXX
-IF IDENFICADOR IS NOT NUMERIC THEN
-    XXXX
-IF IDENFICADOR IS ALPHABETIC THEN
-    XXXX
-IF IDENFICADOR IS NOT ALPHABETIC THEN
-    XXXX
-**********************************
-IF STATUS = 1
-   GO TO  1000-TESTE.
-*COM O PONTO, ELE IGNORA AS PRÓXIMAS LINHAS DO IF
-**********************************
-IF STATUS LESS THAN 4 THEN
-   XXXX
-ELSE IF STATUS GREATER THAN 4 THE
-   XXXX
-                 
+      ****************************************************            
+      *AUTHOR: RENATO COSTA                                           
+      *DATE  : 27/11/2023                                             
+      *MOTIVO: IF                                                     
+      *PROG  : CBL00019.                                              
+      ****************************************************            
+       IDENTIFICATION DIVISION.                                       
+       PROGRAM-ID. CBL00019.                                          
+       ENVIRONMENT DIVISION.                                          
+       CONFIGURATION SECTION.                                         
+       DATA DIVISION.                                                 
+       FILE SECTION.                                                  
+       WORKING-STORAGE SECTION.                                       
+       01 WS-VARS.                                                    
+          02 WS-VN1                     PIC S9(7)V99 VALUE 1050.      
+          02 WS-VN2                     PIC S9(7)V99 VALUE 1100.      
+          02 WS-VT                      PIC X(30) VALUE 'TESTE'.      
+       PROCEDURE DIVISION.                                            
+       MAIN-PROCEDURE.                                                
+                                                                      
+      *TESTES DE CONFIRMACAO DO TIPO DE VARIAVEL                      
+           IF WS-VN1 IS NUMERIC THEN                                  
+             DISPLAY 'WS-VN1 TIPO NUMERICO'                           
+           ELSE                                                       
+               DISPLAY 'WS-VN1 TIPO NAO NUMERICO'                     
+           END-IF.                                                    
+           IF WS-VT IS ALPHABETIC THEN                                  
+              DISPLAY 'WS-VT TIPO ALPHABETIC'                           
+           END-IF.                                                      
+      *******************                                               
+           DISPLAY WS-VN1.                                              
+      *O VALOR 1050.00 EH ARMAZENADO COMO SINAL POSITIVO EM FORMATO     
+      *ZONED DECIMAL(PADRAO EM COBOL PARA DISPLAY).                     
+      *NESSE FORMATO, O ULTIMO DIGITO CARREGA TAMBEM O SINAL:           
+      *{ ? REPRESENTA POSITIVO QUANDO O ULTIMO DIGITO EH ZERO.          
+      *} ? REPRESENTARIA NEGATIVO.                                      
+      *OUTROS SIMBOLOS (A I, J R) PODEM APARECER DEPENDENDO DO DIGITO   
+      *  E DO SINAL.                                                    
+           GOBACK.                                                      
+      **************************************************************    
+      **************************************************************    
+      **************************************************************    
+      *IF CONDITION THEN                                                
+      *    PROCESSAMENTO1                                               
+      *ELSE                                                             
+      *    PROCESSAMENTO2                                               
+      *END IF                                                           
+      **********************************                                
+      *IF STATUS = 1                                                    
+      *  GO TO  1000-TESTE.                                             
+      *COM O PONTO, ELE IGNORA AS PRÓXIMAS LINHAS DO IF                 
+      **********************************                                
+      *IF STATUS LESS THAN 4 THEN                                       
+      *   XXXX                                                          
+      *ELSE IF STATUS GREATER THAN 4 THE                                
+      *   XXXX                                                          
+      ******************************************                        
+      *PEMITE TESTES DE CONDICOES COMO MAIOR, MENOR, IGUAL ETC.         
+      * EX: > OU GREATE THAN                                            
+      ******************************************                        
+      *TESTE DE CONDICAO DE CLASSE - PERMITE CONFIRMAR SE               
+      * VARIAVEL EH NUMERICA OU ALFABETIC                               
+      *           IF VARIAVEL IS NUMERIC                                
+      *           IF VARIAVEL IS NOT NUMERIC                            
+      *           IF VARIAVEL IS ALPHABETIC                             
+      *           IF VARIAVEL IS NOT ALPHABETIC                         
+      *EX: IF VARIAVEL IS NOT NUMERIC PERFORM P1.                       
+      *    IF VARIAVEL IS NUMERIC GO TO PROCESSAMENTOX.                 
+      ******************************************                        
+      *TESTE DE CONDICAO DE RELACAO                                     
+      *IF {INDENTIFIER, LITERAL OU EXPRESSAO} OPERADOR DE               
+      * RELACAO {INDENTIFIER, LITERAL OU OU EXPRESSAO}                  
+      *EX: IF V1 GREATER 10 PERFORM P1                                  
+      *    IF V1 EQUAL 10 PERFORM P2                                    
+      *    IF V1 NOT LESS V2 PERFORM P3                                 
+      ******************************************                        
+      *TESTE DE CONDICAO DE SINAL                                       
+      *    IF V1 IS POSITIVE PERFORM S1                                 
+      *    IF V1 IS NOT POSITIVE PERFORM S1                             
+      *    IF V1 IS NEGATIVE PERFORM S2                                 
+      *    IF V1 IS NOT NEGATIVE PERFORM S2                       
+      *    IF V1 IS ZERO PERFORM S3                               
+      *    IF V1 IS NOT ZERO PERFORM S3                           
+      *                                                           

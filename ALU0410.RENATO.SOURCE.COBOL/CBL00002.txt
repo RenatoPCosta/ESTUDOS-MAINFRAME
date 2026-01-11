@@ -13,6 +13,9 @@
        DATA DIVISION.                                                   
        FILE SECTION.                                                    
        WORKING-STORAGE SECTION.                                         
+       *TESTE IGNORANDO ESPACES                          
+        77 WS-REVERSE    PIC X(30) VALUE 'RENATO COSTA'. 
+        77 WS-REVERINDIC PIC 9(2) VALUE ZEROES.          
       ****DADOS PESSOAIS                                                
        77 WS-NOME       PIC A(50).                                      
       * PIC A - ALFABETICO                                              
@@ -57,6 +60,15 @@
                                                                         
            DISPLAY 'CBL00002 TESTE P1 FINAL COM SUCESSO'.               
            DISPLAY '**********************************'.                
+      *TESTE IGNORANDO ESPACES E CONCATENANDO INFORMACOES               
+      *   TESTE SEM INSPECT                                             
+            DISPLAY 'NOME: ' WS-REVERSE ' *'.                           
+      *   TESTE COM INSPECT                                             
+            INSPECT FUNCTION REVERSE(WS-REVERSE)                        
+                             TALLYING WS-REVERINDIC FOR LEADING ' '.    
+            DISPLAY 'NOME: '                                            
+            WS-REVERSE(1:(FUNCTION LENGTH(WS-REVERSE) - WS-REVERINDIC)) 
+            ' *'.                                                       
            GOBACK.                                                      
       ******************************************************************
       *IDENTIFICATION DIVISION:A PRIMEIRA DIVISAO DE UM PROGRAMA COBOL  

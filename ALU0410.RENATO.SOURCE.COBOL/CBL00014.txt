@@ -24,6 +24,7 @@
       **********                                             
             COMPUTE WS-NUM-B = WS-NUM-B + 1                  
                      ON SIZE ERROR PERFORM ERROR-PROCEDURE.  
+            COMPUTE WS-NUM-B = WS-NUM-B + 1
             DISPLAY 'VALOR FINAL: ' WS-NUM-B.                
       **********                                             
             GOBACK.                                          
