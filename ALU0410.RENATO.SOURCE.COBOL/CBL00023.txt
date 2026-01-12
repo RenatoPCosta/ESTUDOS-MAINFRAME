@@ -29,3 +29,7 @@
                SET I UP BY 1                                            
             END-PERFORM.                                                
             GOBACK.                                                     
+      *EM COBOL, INDICES S  PODEM SER MANIPULADOS COM SET     
+      *(EX.: SET I TO 1, SET I UP BY 1).                      
+      *SE QUISER USAR PERFORM VARYING, DECLARE WS-I E WS-J    
+      *COMO VARIAVEIS NUMERICAS (PIC 9) E USE COMO SUBSCRITOS.

@@ -1,7 +1,7 @@
       ****************************************************             
       *AUTOR : RENATO COSTA                                            
       *DATA  : 17/05/2023                                              
-      *MOTIVO: USO DE VARIAVEIS 2                                      
+      *MOTIVO: USO DE VARIAVEIS 2 -MASCARA                           
       *PROG  : CBL00003.                                               
       ****************************************************             
        IDENTIFICATION DIVISION.                                        
@@ -64,6 +64,20 @@
        01 WS-STATUS-PEDIDO  PIC X.                                      
           88 APROVADO       VALUE 'A'.                                  
           88 REPROVADO      VALUE 'R'.                                  
+      ***************************************************************   
+      ***************************************************************   
+      *VARIAVEIS PARA TESTE DE MASCARA                                  
+       77 WS-NAT                PIC 9(5) VALUE ZEROES.                  
+       77 WS-DEC                PIC 9(5)V99 VALUE ZEROES.               
+       77 WS-REAL               PIC S9(5)V99 VALUE ZEROES.              
+                                                                        
+       01 WS-TESTEMASCARA.                                              
+        03 WS-INTMASCB           PIC 999B999B999.                       
+        03 WS-INTMASC1           PIC ---.--9.99.                        
+        03 WS-INTMASC2           PIC 999,999.99.                        
+        03 WS-DECMASC1           PIC ZZZ.ZZ9.99.                        
+        03 WS-DECMASC2           PIC $$$.$$9.99.                        
+        03 WS-DECMASC3           PIC ***.**9.99.                        
        PROCEDURE DIVISION.                                              
        MAIN-PROCEDURE.                                                  
                EVALUATE WS-EXEMPLOS-NIVEL-88                            
@@ -83,6 +97,33 @@
       *        DISPLAY DO NIVEL 66                                  
                MOVE 1997 TO  WS-ANO-AMD.                            
                DISPLAY WS-DMAR.                                     
+      ***************************************************************   
+      ***************************************************************   
+      *TESTE DE MASCARA                                                 
+           MOVE 1 TO WS-NAT                                             
+                   WS-DEC                                               
+                   WS-REAL.                                             
+                                                                        
+           DISPLAY   WS-NAT.                                            
+           DISPLAY   WS-DEC.                                            
+           DISPLAY   WS-REAL.                                           
+                                                                        
+           MOVE  WS-NAT TO WS-INTMASCB                                  
+                         WS-INTMASC1                                    
+                         WS-INTMASC2.                                   
+                                                                        
+           MOVE 150 TO  WS-DECMASC1                                     
+                        WS-DECMASC2                                     
+                        WS-DECMASC3.                                    
+           DISPLAY WS-INTMASCB.                                         
+           DISPLAY WS-INTMASC1.                                         
+           DISPLAY WS-INTMASC2.                                         
+           DISPLAY WS-DECMASC1.                                         
+           DISPLAY WS-DECMASC2.                                         
+           DISPLAY WS-DECMASC3.                                         
+      *00001 CASO HAJA DIVISAO, SERA PERDIDO O CONTEUDO FLOAT POS DECIMA
+      *00001.00                                                         
+      *+00001.00  CASO MULTIPLICADO POR -1 RESULTA -00001.00            
            GOBACK.     
       ********************************************                      
       *O COMP FUNCIONA DE FORMA QUE COMPRIME O HEXADECIMAL PARA USO     

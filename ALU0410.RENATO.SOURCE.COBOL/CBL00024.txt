@@ -1,0 +1,34 @@
+      ****************************************************             
+      *AUTHOR: RENATO COSTA                                            
+      *DATE  : 11/01/2026                                              
+      *MOTIVO: BUSCA EM MATRIZES                                       
+      *PROG  : CBL00024.                                               
+      ****************************************************             
+       IDENTIFICATION DIVISION.                                        
+       PROGRAM-ID. CBL00001.                                           
+       ENVIRONMENT DIVISION.                                           
+       CONFIGURATION SECTION.                                          
+       SPECIAL-NAMES.                                                  
+           DECIMAL-POINT IS COMMA.                                     
+       DATA DIVISION.                                                  
+       FILE SECTION.                                                   
+       WORKING-STORAGE SECTION.                                        
+       01 WS-MATRIZ.                                                   
+        03 WS-REGISTRO OCCURS 5 TIMES                                  
+                ASCENDING KEY IS WS-KEY INDEXED BY I.                  
+         05 WS-KEY          PIC 9(2).                                  
+         05 WS-NOME         PIC X(8).                                  
+       77 WS-COD            PIC 9(9) VALUE 3.                          
+       LINKAGE SECTION.                                                
+       PROCEDURE DIVISION.                                             
+       MAIN-PROCEDURE.                                                 
+       MAIN-PROCEDURE.                                                 
+            MOVE '01NOME000102NOME000203RENATOPC04NOME000405NOME0005'  
+                        TO WS-MATRIZ.                                  
+            DISPLAY WS-MATRIZ.                                          
+            SEARCH ALL WS-REGISTRO                                      
+                AT END DISPLAY 'NAO LOCALIZADO'                         
+                WHEN WS-KEY(I) = WS-COD                                 
+                 DISPLAY 'ENCONTRADO :' WS-KEY(I) ' - ' WS-NOME(I)      
+                         '    *POSITION' WS-COD.                        
+            GOBACK.                                                     
