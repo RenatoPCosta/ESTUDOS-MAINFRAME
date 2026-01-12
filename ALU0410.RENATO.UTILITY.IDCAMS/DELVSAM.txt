@@ -1,0 +1,5 @@
+//JCLVSAM   JOB 'CRIAVSAM',CLASS=C,MSGCLASS=C,NOTIFY=&SYSUID  
+//STEP1     EXEC PGM=IDCAMS                                   
+//SYSPRINT  DD SYSOUT=*                                       
+//SYSIN     DD *                                              
+ DELETE (ALU0410.RENATO.MYSYS.ARQVSAM.KSDS) PURGE CLUSTER     

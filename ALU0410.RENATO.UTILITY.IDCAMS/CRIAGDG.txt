@@ -1,0 +1,43 @@
+//JCLGDG    JOB 'CRIAGDG',CLASS=C,MSGCLASS=C,NOTIFY=&SYSUID             
+//STEP1     EXEC PGM=IDCAMS                                             
+//SYSPRINT  DD SYSOUT=*                                                 
+//SYSIN     DD *                                                        
+ DEFINE GDG(NAME(ALU0410.RENATO.GDG.BASEGDG) -                          
+      LIMIT(5) -                                                        
+      NOEMPTY -                                                         
+      SCRATCH )                                                         
+//*        GDG                                                          
+//*        NAO SUPORTADO PARA ARQUIVOS VSAM                             
+//* UM ARQUIVO DEFINIDO COMO GDG FAZ COM QUE O SISTEMA CRIE AUTOMATICA- 
+//*MENTE UM VERSIONAMENTO A CADA NOVA GERACAO, FACILITANDO SUA REFEREN- 
+//*CIA FUTURA.                                                          
+//* PARA ISTO,EH NECESSARIO CRIAR UMA ENTRADA ESPECIAL NO CATALOGO CHA- 
+//*MADO : GDG BASE                                                      
+//* NO GDG BASE, EH INFROMADO QUANTAS VERSOES O ARQUIVO DEVE SUPORTAR.  
+//*EH POSSIVEL DEFINIR ATE 255 GDG BASE NO CATALOGO                     
+//********************************************************              
+//********************************************************              
+//* OS ARQUIVOS VERSIONADOS PELO GDG PODEM SER ACESSADOS DA SEGUINTE MA-
+//*NEIRA:                                                               
+//*                                                                     
+//*  RELATIVO: EX: ALU0410.SOURCE.JCL(0)                                
+//*  ABSOLUTO: EX: ALU0410.SOURCE.JCL.ARQ0001V00                        
+//*                                                                     
+//*AMBOS OS EXEMPLOS APONTAM PARA O MESMO ARQUIVO.                      
+//*O USO INDICADO EH PELA FORMA RELATIVA.                               
+//*A FORMA ABSOLUTA EH USADA SOMENTE EM CASOS ESPECIAIS(PESQUISAR***)   
+//********************************************************              
+//********************************************************              
+//* USANDO O IDCAMS PARAA FAZER A DEFINICAO DO GDG NO CATALOGO          
+//* (O CATALOGO EH UM ARQUIVO VSAM)                                     
+//*                                                                     
+//*DEFINE GDG(NAME(ALU0410.SOURCE.MEUGDG)  -> NOME DO ARQUIVO           
+//*LIMITE -> DEFINI A QUANTIDADE DE VERSOES (ATE 255)                   
+//*EMPTY/NOEMPTY -> INDICA O COMPORTAMENTO COM AS VERSOES DO GDG CATALO-
+//*GADAS QUANDO O LIMITE DE VERSOES FOR ATINGIDO:                       
+//*     EMP -> DESCATALOGO DE TODAS AS VERSOES                          
+//*     NEMP -> DESCATALOGO APENAS A VERSAO MAIS ANTIGA                 
+//*SCRATCH/NO SCRATCH -> COMBINADA COM O EMPTY/NOEMPTY,INDICA SE ALEM   
+//*     DE DECATALOGAR O ARQUIVO TAMBBEM TERA SUA DSCB DELETADA DO DISCO
+//*     SCR = DELETA ARQUIVO DO DISCO                                   
+//*     NSCR = NAO DELETA O ARQUIVO DO DISCO                            
