@@ -1,0 +1,13 @@
+//CRPOICEG  JOB 'CRIARQ',CLASS=A,MSGCLASS=C,NOTIFY=&SYSUID,             
+//             MSGLEVEL=(1,1),TIME=(00,01)                              
+//STEP1     EXEC PGM=ICEGENER                                           
+//SYSPRINT  DD SYSOUT=*                                                 
+//SYSUT2    DD DSN=ALU0410.RENATO.ARQUIPO2,                             
+//          UNIT=3390,                                                  
+//          DISP=(NEW,CATLG,DELETE),                                    
+//          SPACE=(TRK,(1,1),RLSE),                                     
+//          DCB=(RECFM=FB,LRECL=80,DSORG=PS,BLKSIZE=27920)              
+//SYSUT1    DD *                                                        
+NOME 1      67334747                                                    
+NOME 2      92262417                                                    
+NOME 3      74569922                                                    

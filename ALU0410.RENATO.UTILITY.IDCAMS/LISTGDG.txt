@@ -1,0 +1,6 @@
+//LISTGDG  JOB 'LIST',CLASS=C,MSGCLASS=C,NOTIFY=&SYSUID 
+//STEP1    EXEC PGM=IDCAMS                              
+//SYSPRINT DD SYSOUT=*                                  
+//SYSIN    DD *                                         
+  LISTCAT ENTRY(ALU0410.RENATO.GDG.BASEGDG) ALL         
+/*                                                      
