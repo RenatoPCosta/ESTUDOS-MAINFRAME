@@ -1,0 +1,6 @@
+//PROC1   PROC                                             
+//STEP1     EXEC PGM=IEFBR14                               
+//DDCRIADO  DD DSN=&ARQUIVO,SPACE=(TRK,(1,1),RLSE),        
+//          DISP=(NEW,CATLG,DELETE),UNIT=3390,             
+//          DCB=(RECFM=FB,LRECL=80,DSORG=PS,BLKSIZE=27920) 
+//          PEND                                           

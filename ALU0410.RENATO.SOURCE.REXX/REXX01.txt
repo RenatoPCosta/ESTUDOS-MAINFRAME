@@ -1,0 +1,60 @@
+/* REXX - REXX01   - ESTA E A NOSSA PRIMEIRA REXX NO CURSO           */ 
+/* COMENTARIO                                                           
+  */                                                                    
+                                                                        
+  CONT = 0                                                              
+  DO WHILE CONT < 10                                                    
+     SAY CONT                                                           
+     CONT = CONT + 1                                                    
+  END                                                                   
+  SAY 'CAMPOY='CAMPOY                                                   
+  CAMPOY = 'MANDIOCA     '                                              
+  SAY 'CAMPOY='CAMPOY 'TAM1='LENGTH(CAMPOY) 'TAM2='LENGTH(STRIP(CAMPOY))
+                                                                        
+  IF CAMPOY = 'MANDIOCA'  THEN  SAY 'E IGUAL A MANDIOCA'                
+  ELSE SAY 'NAO E IGUAL A MANDIOCA'                                     
+                                                                        
+  IF CAMPOY == 'MANDIOCA'  THEN  SAY 'E IGUAL A MANDIOCA COM 8 BYTES'   
+  ELSE SAY 'NAO E IGUAL A MANDIOCA COM 8 BYTES'                         
+                                                                        
+  CAMPO1 = 2 + 3; CAMPO2 = 8; CAMPO3 = "A' B C"                         
+  CAMPO4 = CAMPO1||CAMPO3'-' CAMPO2                                     
+  CAMPOX = CAMPO1 + CAMPO2                                              
+  SAY 'CAMPOX='CAMPOX                                                   
+  NUMERIC DIGITS 30                                                     
+  SAY 1234567890 + 987654321                                            
+/*SIGNAL PONTO90 */                                                     
+  CALL PONTO90 'PARM1'  'PARM2'                                         
+                                                                       
+  RETORNO = FUNCAO_TESTE('A','B')                                      
+  SAY 'RETORNO='RETORNO                                                
+                                                                       
+  PARSE VAR RETORNO V1 V2 V3 V4 ',' V5                                 
+  SAY 'V1='V1 'V2='V2 'V3='V3 'V4='V4 'V5='V5                          
+                                                                       
+                                                                       
+  SAY 'ALO MUNDO'                                                      
+  SAY 'CAMPO1='CAMPO1 'CAMPO2='CAMPO2 'CAMPO3='CAMPO3 'CAMPO4='CAMPO4  
+                                                                       
+  IF CAMPO1 = 5  THEN SAY 'O VALOR E CINCO'                            
+  ELSE SAY 'O VALOR NAO E CINCO                                        
+                                                                       
+**********                                                             
+IF CAMPO1 = 5  THEN DO                                                 
+     SAY 'AGORA NO IF COM DO - VALOR E CINCO'                          
+     SAY 'COM N COMANDOS'                                              
+  END                                                                  
+  ELSE DO                                                              
+     SAY 'VARIOS COMANDOS'                                             
+  END                                                                  
+                                                                       
+  SAY 'CONTINUA O PROCESSAMENTO'                                       
+PONTO90:                                                               
+  SAY 'PONTO90'                                                        
+RETURN 0                                                               
+                                                             
+FUNCAO_TESTE:                                                
+  TALLY1 = ARG(1)                                            
+  TALLY2 = ARG(2)                                            
+  SAY 'FUNCAO = TALLY1='TALLY1  'TALLY2='TALLY2              
+RETURN 'C D E*F,G'                                           

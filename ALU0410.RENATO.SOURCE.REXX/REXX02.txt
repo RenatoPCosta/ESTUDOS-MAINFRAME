@@ -1,0 +1,39 @@
+/* REXX - REXX02    - TRABALHAR UM POUCO COM ARQUIVOS                */ 
+  MSGT = MSG('OFF')  /* SUPRIME MENSAGENS DE ERRO */                    
+                                                                        
+  /* ABERTURA DO DDNAME SYSUT1 COM O ARQUIVO "REXX.AULA01(REXX02D)"  */ 
+/* "ALLOC FI(SYSUT1) DSN('REXX.AULA01(REXX02D') SHR"' */                
+                                                                        
+  SYSUT1 = 'REXX.AULA01(REXX02D)'                                       
+ "FREE FI(SYSUT1)"                                                      
+ "ALLOC FI(SYSUT1) DSN('"SYSUT1"') SHR"                                 
+ "EXECIO * DISKR SYSUT1 (FINIS STEM UT1.)"                              
+ "FREE FI(SYSUT1)"                                                      
+ SAY "REGISTROS LIDOS" UT1.0                                            
+                                                                        
+  I2 = 0                                                                
+  DO IDX = 1 TO UT1.0 BY 1                                              
+     SAY 'REGISTRO 'IDX'='STRIP(UT1.IDX,'B') /* B = BOTH */             
+                                                                        
+     I2 = I2 + 1                                                        
+     UT2.I2 = STRIP(UT1.IDX,'B')                                        
+  END                                                                   
+                                                                        
+  SYSUT2 = 'REXX.AULA01(REXX03S)'                                       
+ "FREE FI(SYSUT2)"                                                      
+ "ALLOC FI(SYSUT2) DSN('"SYSUT2"') SHR"                                 
+ "EXECIO "I2" DISKW SYSUT2 (FINIS STEM UT2.)"                           
+ "FREE FI(SYSUT2)"                                                      
+/* EXIT 0  */                                                           
+                                                
+  SAY 'QTD REGISTROS='UT1.0                     
+  SAY 'REGISTRO 1   ='UT1.1                     
+  SAY 'REGISTRO 2   ='UT1.2                     
+  IF UT1.3 = "LINHA DO ZOPPI" THEN              
+     UT1.3 = "LARANJA"                          
+  SAY 'REGISTRO 3   ='UT1.3                     
+  SAY 'REGISTRO 1   ='UT1.1                     
+  SAY 'REGISTRO 4   ='UT1.4                     
+  SAY 'REGISTRO 5   ='UT1.5                     
+  SAY 'REGISTRO 6   ='UT1.6                     
+EXIT 1                                          

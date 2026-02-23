@@ -1,0 +1,17 @@
+//JCLVSAM   JOB 'CRIAVSAM',CLASS=C,MSGCLASS=C,NOTIFY=&SYSUID            
+//STEP1     EXEC PGM=IDCAMS                                             
+//SYSPRINT  DD SYSOUT=*                                                 
+//SYSIN     DD *                                                        
+  DELETE (ALU0547.RENATO.MYSYS.ARQVSA2.KSDS) PURGE CLUSTER              
+  IF MAXCC = 8 THEN SET MAXCC = 0                                       
+  DEFINE CLUSTER -                                                      
+    (NAME(ALU0547.RENATO.MYSYS.ARQVSA2.KSDS) -                          
+     INDEXED -                                                          
+     RECORDSIZE(06 80) -                                                
+     KEYS(5 0) -                                                        
+     FREESPACE(10 10) -                                                 
+     CYL(1 1) -                                                         
+     VOLUMES(PR39C7) -                                                  
+     REUSE) -                                                           
+    DATA(NAME(ALU0547.RENATO.MYSYS.ARQVSA2.KSDS.DATA)) -                
+    INDEX(NAME(ALU0547.RENATO.MYSYS.ARQVSA2.KSDS.INDEX))                

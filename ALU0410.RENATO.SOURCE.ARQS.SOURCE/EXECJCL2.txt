@@ -1,0 +1,11 @@
+//JEXERA00 JOB IBMUSERA,MSGCLASS=A,CLASS=A,NOTIFY=ALU0410,TIME=(00,01)
+//JOBLIB   DD  DSN=ALU0410.RENATO.LOADCBL,DISP=SHR                    
+//*****************************************************************   
+//*  STEP001 - EXECUTA PGM                                            
+//*****************************************************************   
+//STEP001  EXEC PGM=CBL0ARQ2                                          
+//SYSOUT   DD   DSN=ALU0410.RENATO.MYSYS.MYSYSOUT,DISP=OLD            
+//SYSPRINT DD   SYSOUT=*                                              
+//ENTRADAJ DD   DSN=ALU0410.RENATO.MYSYS.MYSYSIN,DISP=SHR             
+//SYSIN    DD   *                                                     
+55555                                                                 

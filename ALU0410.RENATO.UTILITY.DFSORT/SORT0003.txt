@@ -1,0 +1,11 @@
+//SORT00X3 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID      
+//STEP1    EXEC PGM=SORT                                             
+//SORTIN   DD *                                                      
+12345RENATO COSTA   SETOR 1                                          
+12345RENATO COSTA   SETOR 2                                          
+12345RENATO COSTA   SETOR 3                                          
+//SORTOUT  DD SYSOUT=*                                               
+//SYSOUT   DD SYSOUT=*                                               
+//SYSIN    DD *                                                      
+ SORT FIELDS=COPY                                                    
+ OUTREC FIELDS=(6,15,C' = ',21,7)                                    

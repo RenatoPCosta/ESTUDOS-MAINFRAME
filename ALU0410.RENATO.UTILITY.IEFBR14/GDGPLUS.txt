@@ -1,0 +1,7 @@
+//JCLGDGP   JOB 'GDGPLUS',CLASS=C,MSGCLASS=C,NOTIFY=&SYSUID
+//STEP1     EXEC PGM=IEFBR14                               
+//ARQUIVO   DD DSN=ALU0547.RENATO.GDG.BASEGDG(+1),         
+//          UNIT=SYSDA,                                    
+//          DISP=(NEW,CATLG,DELETE),                       
+//          SPACE=(TRK,(1,1),RLSE),                        
+//          DCB=(RECFM=FB,LRECL=80,DSORG=PS,BLKSIZE=27920) 

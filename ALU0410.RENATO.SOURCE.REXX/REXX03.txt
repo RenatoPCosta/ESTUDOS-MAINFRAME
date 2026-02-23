@@ -1,0 +1,31 @@
+/* REXX - REXX03   - MINHA TERCEIRA REXX  */                        
+  MSGT = MSG('OFF')                                                 
+                                                                    
+  /* ALOCA ARQUIVO E EFETUA A LEITURA DE TODOS OS REGISTROS */      
+  SYSUT1 = 'REXX.AULA01(REXX03D)'                                   
+ "FREE FI(SYSUT1)"                                                  
+ "ALLOC FI(SYSUT1) DSN('"SYSUT1"') SHR"                             
+ "EXECIO * DISKR SYSUT1 (FINIS STEM UT1.)"                          
+                                                                    
+  /* CLASSIFICA REGISTROS LIDOS */                                  
+  DO FOREVER                                                        
+     FLAG = 'S'                                                     
+     DO I = 1 TO UT1.0 - 1 BY 1                                     
+        J = I + 1                                                   
+        IF UT1.I > UT1.J  THEN DO                                   
+           FLAG = 'N'                                               
+           UTX = UT1.I                                              
+           UT1.I = UT1.J                                            
+           UT1.J = UTX                                              
+        END                                                         
+     END                                                            
+     IF FLAG = 'S'  THEN LEAVE                                      
+  END                                                               
+                                                                    
+  /* ALOCA ARQUIVO E EFETUA A GRAVACAO DE TODOS OS REGISTROS */     
+ "EXECIO * DISKW SYSUT1 (FINIS STEM UT1.)"                          
+ "FREE FI(SYSUT1)"                                                  
+                                      
+  /* MENSAGEM DE SUCESSO */           
+  SAY 'SUCESSO NA CLASSIFICACAO'      
+RETURN                                

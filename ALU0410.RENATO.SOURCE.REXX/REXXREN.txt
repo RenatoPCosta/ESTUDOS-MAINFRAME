@@ -1,0 +1,35 @@
+/*REXX*/                                                                
+                                                                        
+TESTE = SYSDSN('ALU0410.RENATO.LOAD')                                   
+SAY TESTE '< - RESULTADO'                                               
+                                                                        
+                                                                        
+SYSUT1 = 'ALU0410.RENATO.TEST'                                          
+OK = SYSDSN("'"SYSUT1"'")                                               
+IF OK = 'OK' THEN DO                                                    
+     SAY 'DATASET JA CRIADO'                                            
+     RETURN                                                             
+     END                                                                
+ELSE DO                                                                 
+  "ALLOC FILE(TESTADO) DA('ALU0410.RENATO.TEST'),                       
+  NEW CATALOG SPACE(1,1)",                                              
+  "RECFM(F B) LRECL(80) BLKSIZE(27920) DSORG(PS)"                       
+     SAY RC                                                             
+     "FREE FILE(TESTADO)"                                               
+     SAY 'ARQUIVO CRIADO COM SUCESSO'                                   
+     END                                                                
+/*                                                                      
+QUANDO UM CONJUNTO DE DADOS NAO ESTA CORRETO COMO ESPECIFICADO OU QUAN  
+UM CONJUNTO DE DADOS NAO ESTA DISPONIVEL                                
+, A FUNCAO SYSDSN RETORNA UMA DAS SEGUINTES MENSAGENS:                  
+                                                                        
+MEMBER SPECIFIED, BUT DATASET IS NOT PARTITIONED                        
+MEMBER NOT FOUND                                                        
+DATASET NOT FOUND                    
+ERROR PROCESSING REQUESTED DATASET   
+PROTECTED DATASET                    
+VOLUME NOT ON SYSTEM                 
+UNAVAILABLE DATASET                  
+INVALID DATASET NAME, DATA-SET-NAME: 
+MISSING DATASET NAME                 
+*/                                   

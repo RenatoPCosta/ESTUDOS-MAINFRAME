@@ -1,0 +1,21 @@
+/* PROGRAMA: FIZZBUZZ COM SELECT EM REXX */                     
+/* CHATGPT(IA) */                                               
+SAY "INFORME UM NUMERO:"                                        
+PULL N                                                          
+/* VERIFICA SE EH NUMERICO */                                   
+IF DATATYPE(N, 'N') = 0 THEN DO                                 
+    SAY "VALOR INVALIDO. INFORME UM NUMERO INTEIRO."            
+    EXIT                                                        
+END                                                             
+DO I = 1 TO N                                                   
+    SELECT                                                      
+        WHEN (I // 3 = 0) & (I // 5 = 0) THEN                   
+            SAY "FIZZBUZZ"                                      
+        WHEN I // 3 = 0 THEN                                    
+            SAY "FIZZ"                                          
+        WHEN I // 5 = 0 THEN                                    
+            SAY "BUZZ"                                          
+        OTHERWISE                                               
+            SAY I                                               
+    END                                                         
+END                                                             

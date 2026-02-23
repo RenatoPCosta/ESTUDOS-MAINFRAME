@@ -1,0 +1,7 @@
+//JCLVSAM   JOB 'CRIAVSAM',CLASS=C,MSGCLASS=C,NOTIFY=&SYSUID     
+//STEP1     EXEC PGM=IDCAMS                                      
+//SYSPRINT  DD SYSOUT=*                                          
+//ARQIN     DD DSN=ALU0547.RENATO.MYSYS.INPUTVS,DISP=SHR         
+//ARQOUT    DD DSN=ALU0547.RENATO.MYSYS.ARQVSA2.KSDS,DISP=OLD    
+//SYSIN     DD *                                                 
+ REPRO IFILE(ARQIN)  OFILE(ARQOUT)                               

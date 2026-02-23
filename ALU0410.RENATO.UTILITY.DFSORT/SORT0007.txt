@@ -1,0 +1,17 @@
+//SORT00X1 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID     
+//STEP1    EXEC PGM=SORT                                            
+//SYMNAMES DD *                                                     
+AGENCIA,1,5,CH                                                      
+NOME,6,8,CH                                                         
+VALOR,14,3,ZD                                                       
+//SORTIN   DD *                                                     
+11111RENATO  150                                                    
+11111NOME 1   90                                                    
+11121NOME 2  200                                                    
+11111NOME 3  400                                                    
+//SORTOUT  DD DSN=ALU0547.RENATO.MYSYS(SORTOUT),DISP=OLD            
+//SYSOUT   DD SYSOUT=*                                              
+//SYSIN    DD *                                                     
+ SORT FIELDS=(NOME,CH,A)                                            
+   INCLUDE COND=(AGENCIA,EQ,C'11111')                               
+//*SYMBOLIC NAMES                                                   

@@ -1,0 +1,9 @@
+//#PDSE    JOB NOTIFY=&SYSUID                                    
+//IEFBR14  EXEC PGM=IEFBR14                                      
+//PDS      DD DISP=(NEW,CATLG),DSN=ALU0547.RENATO.PDS,           
+//           UNIT=SYSDA,SPACE=(TRK,(3,2,1),RLSE),                
+//           DSORG=PO,RECFM=FB,LRECL=80                          
+//PDSE     DD DISP=(NEW,CATLG),DSN=DSN=ALU0547.RENATO.PDSE,      
+//           UNIT=SYSDA,SPACE=(TRK,(3,2,1),RLSE),                
+//           DSORG=PO,RECFM=FB,LRECL=80,DSNTYPE=LIBRARY          
+//* GERENCIADOS POR SMS. NAO FOI POSSIVEL CRIAR NO VOLUME        

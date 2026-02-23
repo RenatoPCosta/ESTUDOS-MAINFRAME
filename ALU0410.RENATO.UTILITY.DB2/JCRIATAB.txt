@@ -1,0 +1,68 @@
+//JCRIATAB JOB DBADB2JC,MSGCLASS=A,CLASS=C,NOTIFY=&SYSIUD              
+//*                                                                    
+//JOBLIB  DD  DSN=SYS2.DB2.SDSNLOAD,DISP=SHR                           
+//*       STEP  1: CREATE SAMPLE STORAGE GROUPS, TABLESPACES           
+//PH01S01 EXEC PGM=IKJEFT01,DYNAMNBR=20,COND=(4,LT)                    
+//SYSTSPRT DD SYSOUT=*                                                 
+//SYSTSIN  DD *                                                        
+ DSN SYSTEM(DB2N)                                                      
+ RUN  PROGRAM(DSNTIAD) PLAN(DSNTIA51) -                                
+      LIB('SYS2.DB2.RUNLIB.LOAD')                                      
+//SYSPRINT DD SYSOUT=*                                                 
+//SYSUDUMP DD SYSOUT=*                                                 
+//SYSIN    DD *                                                        
+ CREATE DATABASE  BLIVE3                                               
+   STOGROUP  JAKASTG1                                                  
+   BUFFERPOOL BP0                                                      
+   CCSID EBCDIC;                                                       
+                                                                       
+ COMMIT ;                                                              
+                                                                       
+ CREATE TABLESPACE  TSBLIVE3 IN  BLIVE3                                
+   BUFFERPOOL BP0                                                      
+   LOCKSIZE   ANY                                                      
+   SEGSIZE    4                                                        
+   CLOSE      NO                                                       
+   USING STOGROUP  JAKASTG1                                            
+   PRIQTY        48                                                    
+   SECQTY        48                               
+   ERASE      NO                                  
+   PCTFREE    10                                  
+   FREEPAGE   0;                                  
+                                                  
+  COMMIT ;                                        
+                                                  
+   CREATE TABLE DBADB2.TBLIVE3                    
+  (                                               
+   COD_PESS     SMALLINT NOT NULL,                
+   NOM_PESS     CHAR(40) NOT NULL,                
+   END_PESS     CHAR(40) NOT NULL,                
+   NUM_PESS     SMALLINT NOT NULL,                
+   CID_PESS     CHAR(40) NOT NULL,                
+   CEP_PESS     CHAR(09) NOT NULL,                
+   EMA_PESS     CHAR(40) NOT NULL,                
+   COM_PESS     VARCHAR(50) NOT NULL,             
+   LIM_PESS     DECIMAL(10,2) NOT NULL,           
+   NAS_PESS     DATE NOT NULL,                    
+   PRG_PESS     CHAR(08) NOT NULL,                
+   ATU_PESS     TIMESTAMP                         
+   )                                              
+    IN BLIVE3.TSBLIVE3                            
+    ;                                             
+                                                  
+     CREATE        UNIQUE                INDEX    
+     DBADB2.IXTBLIVE3ALL ON     DBADB2.TBLIVE3    
+                     (COD_PESS ASC)                             
+                                                                
+                USING        STOGROUP     JAKASTG1              
+                PRIQTY   12  SECQTY 0     ERASE NO              
+                FREEPAGE 0   PCTFREE   10                       
+                CLUSTER                                         
+                BUFFERPOOL BP0                                  
+                CLOSE YES                                       
+ ;                                                              
+    ALTER TABLE DBADB2.TBLIVE3                                  
+      PRIMARY KEY (COD_PESS)                                    
+;                                                               
+GRANT SELECT,INSERT,UPDATE,DELETE ON DBADB2.TBLIVE3  TO PUBLIC; 
+//                                                              

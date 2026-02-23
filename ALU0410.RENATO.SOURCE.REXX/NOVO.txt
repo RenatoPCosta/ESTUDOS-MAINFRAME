@@ -1,0 +1,22 @@
+/*REXX*/                                              
+SAY 'TESTE DE EXISTENCIA'                             
+  SYSUT1 = 'ALU0410.RENATO.TESTE8'                    
+  TS = SYSDSN("'"SYSUT1"'")                           
+  IF TS = 'OK' THEN                                   
+     DO                                               
+       SAY 'DATASET EXISTE'                           
+        RETURN                                        
+     END                                              
+ELSE DO                                               
+   TRACE I                                            
+  "ALLOC FILE(TESTADO) DA('ALU0410.RENATO.TESTE8'),   
+  NEW CATALOG SPACE('(CYL,5,1)')",                    
+  "RECFM(F B) LRECL(80) BLKSIZE(27920) DSORG(PS)"     
+  SAY RC                                              
+      "FREE FILE(TESTADO)"                            
+      SAY 'ARQUIVO CRIADO'                            
+     END                                              
+                                                      
+                                                      
+/*PENDENTE TRILHAS E CILINDROS*/                      
+                                                      

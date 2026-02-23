@@ -1,0 +1,11 @@
+//SORT0005 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID        
+//STEP1    EXEC PGM=SORT                                               
+//SORTIN   DD *                                                        
+RENATO COSTA                                                           
+//SYSOUT   DD SYSOUT=*                                                 
+//SORTOUT  DD SYSOUT=*                                                 
+//SYSIN    DD *                                                        
+ SORT FIELDS=COPY                                                      
+    OUTREC FINDREP=(INOUT=(C'RENATO',C'OTANER',C'COSTA',C'ATSOC'))     
+//*FIND REPLACE           RECURSO NAO ATIVO NO                         
+//*                             AMBIENTE                               

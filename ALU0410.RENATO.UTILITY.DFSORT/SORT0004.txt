@@ -1,0 +1,22 @@
+//SORT0004 JOB 'SORT ALTSEQ',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID        
+//STEP1    EXEC PGM=SORT                                              
+//SYSOUT   DD SYSOUT=*                                                
+//SORTIN   DD *                                                       
+RENATO                                                                
+AAAEEE                                                                
+//SORTOUT  DD SYSOUT=*                                                
+//SYSIN    DD *                                                       
+ SORT FIELDS=COPY                                                     
+ ALTSEQ CODE=(C1C3,C5C6)                                              
+ OUTREC BUILD=(1,10,TRAN=HEX)                                         
+//*FINALIDADE DE ALTERAR O EBCDIC                RECURSO NAO ATIVO NO 
+//*                                                    AMBIENTE       
+//*ALTSEQ CODE=(C1C3)                                                 
+//*ALTSEQ CODE=(X'C1',X'C3',X'C5',X'C6')                              
+//*                                                                   
+//*OUTREC FIELDS=(1,10,TRAN=ALTSEQ)                                   
+//*OUTREC BUILD=(1,10,TRAN=TRT)                                       
+//*OUTREC BUILD=(1,10,TRAN=HEX)                                       
+//*OUTREC BUILD=(1,10,11,20,TRAN=HEX)   ->RETORNA O HEXADIMAL         
+//*                    RETORNA AS 10 PRIMEIRAS POSICOES COMO CHAR     
+//*                    APOS A 11 ACORRE A CONVERSAO EM HEXADIMAL      

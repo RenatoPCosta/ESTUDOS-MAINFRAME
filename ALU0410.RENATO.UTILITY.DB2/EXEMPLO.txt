@@ -1,0 +1,81 @@
+      *----------------------------------------------------------       
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID.  PINCLCUR.                                           
+      *--------------------------------------------------------------*  
+      *   INCLUIR CURSO NA TABELA DE CURSOS                       *     
+      *--------------------------------------------------------------*  
+       DATA DIVISION.                                                   
+      *---------------------------------------------------------------  
+       WORKING-STORAGE   SECTION.                                       
+                                                                        
+           EXEC SQL INCLUDE SQLCA   END-EXEC.                           
+           EXEC SQL INCLUDE FUCUR   END-EXEC.                           
+                                                                        
+                                                                        
+       01  WS-ERRO-SQL.                                                 
+           05 FILLER                    PIC X(50)  VALUE                
+           'RETCODE NO ACESSO A TABELA DE CURSOS SQLCODE = '.           
+           05 WS-SQLCODE                PIC 9(004) VALUE ZERO.          
+                                                                        
+                                                                        
+       PROCEDURE DIVISION.                                              
+      *---------------------------------------------------------------- 
+                                                                        
+       0000-00-PRINCIPAL                  SECTION.                      
+           MOVE  103               TO      CO-CURSO                     
+           MOVE 'LOGICA/COBOL   '  TO      NO-CURSO                     
+           MOVE 'S1'               TO      IC-PER-CURSO                 
+           MOVE '19.12.2005'       TO      DT-INI-CURSO          
+           MOVE '20.12.2005'       TO      DT-FIM-CURSO          
+           EXEC SQL                                              
+                INSERT INTO   DBADB2.TB_FUCUR                    
+                             (CO_CURSO,                          
+                              NO_CURSO,                          
+                              IC_PER_CURSO,                      
+                              DT_INI_CURSO,                      
+                              DT_FIM_CURSO)                      
+                VALUES       (:CO-CURSO,                         
+                              :NO-CURSO,                         
+                              :IC-PER-CURSO,                     
+                              :DT-INI-CURSO,                     
+                              :DT-FIM-CURSO)                     
+           END-EXEC.                                             
+                                                                 
+           IF  SQLCODE    NOT   EQUAL    +0                      
+               MOVE  SQLCODE TO WS-SQLCODE                       
+               DISPLAY WS-ERRO-SQL                               
+               EXEC  SQL  ROLLBACK END-EXEC                      
+               STOP RUN                                          
+           END-IF.                                               
+           MOVE  104               TO      CO-CURSO              
+           MOVE 'VISUAL BASIC   '  TO      NO-CURSO              
+           MOVE 'V1'               TO      IC-PER-CURSO          
+           MOVE '21.12.2005'       TO      DT-INI-CURSO          
+           MOVE '22.12.2005'       TO      DT-FIM-CURSO          
+           EXEC SQL                                              
+                INSERT INTO   DBADB2.TB_FUCUR                    
+                             (CO_CURSO,                          
+                              NO_CURSO,                          
+                              IC_PER_CURSO,                      
+                              DT_INI_CURSO,                      
+                              DT_FIM_CURSO)                      
+                VALUES       (:CO-CURSO,                         
+                              :NO-CURSO,                         
+                              :IC-PER-CURSO,                     
+                              :DT-INI-CURSO,                     
+                              :DT-FIM-CURSO)                     
+           END-EXEC.                                             
+                                                                 
+           IF  SQLCODE    NOT   EQUAL    +0                      
+               MOVE  SQLCODE TO WS-SQLCODE                       
+               DISPLAY WS-ERRO-SQL                               
+               EXEC  SQL  ROLLBACK END-EXEC                      
+               STOP RUN                                          
+           END-IF.                                               
+                                                                 
+           DISPLAY '********   PROGRAM PINCLCUR   ****'          
+           DISPLAY '********  INCLUSAO EFETUADA   ****'          
+           DISPLAY '********  PROGRAMA  ENCERRO   ****'          
+           EXEC SQL COMMIT END-EXEC                              
+                                                                 
+           STOP RUN.                                             

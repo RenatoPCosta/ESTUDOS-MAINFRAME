@@ -1,0 +1,8 @@
+//SORT00X1 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID 
+//STEP1    EXEC PGM=SORT                                        
+//SORTIN   DD DSN=ALU0547.RENATO.MYSYS(SORT00A8),DISP=SHR       
+//         DD DSN=ALU0547.RENATO.MYSYS(SORT00B8),DISP=SHR       
+//SORTOUT  DD DSN=ALU0547.RENATO.MYSYS(SORTOUT),DISP=OLD        
+//SYSOUT   DD SYSOUT=*                                          
+//SYSIN    DD *                                                 
+ SORT FIELDS=COPY                                               

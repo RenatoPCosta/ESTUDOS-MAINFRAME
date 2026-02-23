@@ -1,0 +1,15 @@
+//SORT00X1 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID         
+//STEP1    EXEC PGM=ICETOOL                                             
+//TOOLMSG  DD SYSOUT=*                                                  
+//DFSMSG   DD SYSOUT=*                                                  
+//INPUT    DD DSN=ALU0547.RENATO.MYSYS(ICETEST),DISP=SHR                
+//OUTPUT   DD DSN=ALU0547.RENATO.MYSYS(ICETES2),DISP=MOD                
+//TOOLIN   DD *                                                         
+ RESIZE FROM(INPUT) TO(OUTPUT) TOLEN(40)                                
+//*RESIZE                                                               
+//*                                                                     
+//* QUEBRA O REGISTRO DE ENTRADA DE ACORDO COM O TOLEN, CRIANDO UM REGIS
+//*-TRO MAIOR A PARTIR DE REGISTROS MAIS CURTOS E O INVERSO TAMBEM      
+//*                                                                     
+//* RECURSO NAO ATIVO NO                                                
+//*       AMBIENTE                                                      

@@ -1,0 +1,13 @@
+//SORT00X2 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID 
+//STEP1    EXEC PGM=SORT                                        
+//SORTIN   DD *                                                 
+11111RENATO  150                                                
+11112NOME 1   90                                                
+11111RENATO  150                                                
+11113NOME 2  400                                                
+//SORTOUT  DD DSN=ALU0547.RENATO.MYSYS(SORTOUT),DISP=OLD        
+//SYSOUT   DD SYSOUT=*                                          
+//SYSIN    DD *                                                 
+ OPTION ZDPRINT                                                 
+ SORT FIELDS=(1,5,CH,A)                                         
+ SUM FIELDS=(14,3,ZD)                                           

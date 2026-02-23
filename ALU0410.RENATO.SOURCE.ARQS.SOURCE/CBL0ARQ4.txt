@@ -1,0 +1,75 @@
+       IDENTIFICATION DIVISION.                                   
+       PROGRAM-ID CBL0ARQ1.                                       
+       ENVIRONMENT DIVISION.                                      
+       CONFIGURATION SECTION.                                     
+       SPECIAL-NAMES.                                             
+           DECIMAL-POINT IS COMMA.                                
+       INPUT-OUTPUT SECTION.                                      
+       FILE-CONTROL.                                              
+            SELECT ENTRADA ASSIGN TO UT-S-ENTRADAJ.               
+      *     SELECT SAIDA   ASSIGN TO UT-S-SAIDAJ.                 
+       DATA DIVISION.                                             
+       FILE SECTION.                                              
+       FD ENTRADA                                                 
+      *   SAIDA                                                   
+           LABEL RECORDS ARE STANDARD                             
+           RECORD CONTAINS 80 CHARACTERS                          
+           BLOCK  CONTAINS  0 RECORDS                             
+           RECORDING MODE IS F                                    
+           DATA RECORD IS ENTRADA.                                
+       01 ENTRADA-CLIENTES.                                       
+         COPY COPYBOOK.                                           
+       WORKING-STORAGE SECTION.                                   
+       77 WS-STATUS               PIC X(01) VALUE 'N'.            
+       77 WS-BUSCA                PIC X(05) VALUE SPACES.         
+       77 WS-FIND                 PIC X(01) VALUE 'N'.            
+       77 WS-INDICE-FIND          PIC 9(10) VALUE ZEROES.         
+       77 WS-INDICE-LIDOS         PIC 9(10) VALUE ZEROES.         
+       77 WS-DATA-RELAT           PIC X(10) VALUE SPACES.               
+       77 WS-HORA-RELAT           PIC X(08) VALUE SPACES.               
+       PROCEDURE DIVISION.                                              
+       0001-MAIN.                                                       
+           ACCEPT WS-BUSCA.                                             
+           PERFORM 0010-ABRIRARQ.                                       
+           PERFORM 0020-PROCESSA UNTIL WS-STATUS = 'S'.                 
+           DISPLAY 'RESULTADOS ENCONTRADOS: ' WS-INDICE-FIND.           
+           DISPLAY 'REGISTROS LIDOS       : ' WS-INDICE-LIDOS.          
+           CLOSE ENTRADA.                                               
+           CALL 'CBLTIMES' USING WS-DATA-RELAT, WS-HORA-RELAT.          
+           DISPLAY WS-DATA-RELAT ' ' WS-HORA-RELAT.                     
+           GOBACK.                                                      
+       0010-ABRIRARQ.                                                   
+           OPEN INPUT ENTRADA.                                          
+           READ ENTRADA AT END MOVE 'S' TO WS-STATUS                    
+      *                        MOVE EM CASO DE FINAL DE ARQUIVO         
+              IF WS-STATUS = 'S' THEN                                   
+      *                        SE A PRIMEIRA LINHA FOR O FINAL          
+                 DISPLAY 'ARQUIVO EM BRANCO'                            
+              END-IF                                                    
+      *********************                                             
+      * PARA O ARQUIVO DE SAIDA, DEVE SER ABERTO COMO LEITURA NO MOMENTO
+      *DE BUSCA DO REGISTRO, CASO NAO ENCONTRE DEVE SER FECHADO E ABERTO
+      *NOVAMENTE COMO "OUTPUT", ASSIM EH POSSIVEL A GRAVACAO            
+      *   ABRIR ARQUIVO COMO SAIDA                                      
+      *    OPEN OUTPUT SAIDA                                            
+              EXIT.                                                     
+       0020-PROCESSA.                                                   
+           ADD 1 TO WS-INDICE-LIDOS.                                    
+           IF FD-AGENCIA = WS-BUSCA THEN                                
+      *                    PODE SER UM VALOR DO JCL OU DE OUTRO ARQUIVO 
+      *                      EM JCL PODE SER USADA PELA SYSIN           
+               DISPLAY 'NOME    : ' FD-NOME-CLIENTE                     
+               DISPLAY 'AGENCIA : ' FD-AGENCIA                          
+               DISPLAY 'DEPOSITO: R$ ' FD-VALOR-DEPOSITO                
+               DISPLAY '*****************************************'      
+               IF WS-FIND NOT = 'S' THEN                                
+                   MOVE 'S' TO WS-FIND                                  
+               END-IF                                                   
+               ADD 1 TO WS-INDICE-FIND                                  
+           END-IF                                                       
+           READ ENTRADA AT END MOVE 'S' TO WS-STATUS                    
+              IF WS-FIND = 'N' AND WS-STATUS = 'S' THEN                 
+      *                        SE A PRIMEIRA LINHA FOR O FINAL          
+                 DISPLAY WS-BUSCA 'NAO ENCONTRADO'                      
+              END-IF                                                    
+           EXIT.                                                        

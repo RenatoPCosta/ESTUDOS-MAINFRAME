@@ -1,0 +1,16 @@
+//SORT0006 JOB 'SORT EXEMPLO',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID       
+//STEP1    EXEC PGM=SORT                                              
+//SORTIN   DD *                                                       
+1557161925131191                                                      
+6192649180543721                                                      
+491800RENATO6007                                                      
+6192619264918665                                                      
+//SORTOUT  DD DSN=ALU0547.RENATO.MYSYS(SORTOUT),DISP=OLD              
+//SYSOUT   DD SYSOUT=*                                                
+//SYSIN    DD *                                                       
+ SORT FIELDS=COPY                                                     
+  INCLUDE COND(1,16,FS,EQ,NUM)                                        
+//*COMPARA STRING PARA CONFIRMAR SE EXISTEM SOMENTE NUMERO NO TRECHO  
+//*                                                                   
+//*  RECURSO NAO ATIVO NO                                             
+//*        AMBIENTE                                                   

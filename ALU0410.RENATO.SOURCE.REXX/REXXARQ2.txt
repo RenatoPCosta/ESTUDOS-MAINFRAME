@@ -1,0 +1,47 @@
+/*REXX    TRACE A  */                                                   
+ADDRESS SDSF                                                            
+RETORNO = 0                                                             
+LINESTR = ''                                                            
+/* CALL EXISTE      CHAMA A FUNCAO EXSITE */                            
+/*****************************************/                             
+RETORNO = SYSDSN('ALU0410.RENATO.MYSYS.MYSYSOUT')                       
+SAY RETORNO                                                             
+EXIT                                                                    
+IF POS("DATASET NOT FOUND",RETORNO) > 0 THEN                            
+      DO WHILE LINES('ALU0410.RENATO.MYSYS.SORTOUT') > 0 THEN           
+        LINESTR = LINEIN('ALU0410.RENATO.MYSYS.SORTOUT')                
+        SAY LINESTR                                                     
+        LINEIN3 = LINEIN('ALU0410.RENATO.MYSYS.SORTOUT',3)              
+        SAY LINEIN3 'CONTEUDO DA LINHA 3'                               
+        CARC = 0                                                        
+        CARC = CHARIN('ALU0410.RENATO.MYSYS.SORTOUT',1,500)             
+        SAY CARC                                                        
+/*O EXEMPLO ACIMA LE A DO CARACTER 1 ATE 500, PODE USAR +D 1 REGISTRO */
+       CARC = CHARS('ALU0410.RENATO.MYSYS.SORTOUT')                     
+       SAY CARC                                                         
+/* NO EXEMPLO ACIMA RETORNA QUANTIDA DE CARACTERES  */                  
+       OUT = 0  /*      ESCREVER LINHA DO ARRQUIVO EXTERNO     */       
+       OUT = LINEOUT('ALU0410.RENATO.MYSYS.SORTOUT','NOVO REGISTRO',4)  
+       SAY OUT   /*RETORNA SE LINHA INSERIDA E SALVA NA LINHA 4  */     
+   END                                                                  
+EXIT                                                                    
+/*******************************************************************/   
+/** FUNCAO CHECAR SE DATASET EXISTE  - PRIMEIRA FORMA             **/   
+/*******************************************************************/   
+LISTADS:                                                                
+ADDRESS TSO "LISTDSI 'ALU0410.RENATO.MYSYS.SORTOUT'" /*  -- OK  */      
+IF SYSDSN = 'OK' THEN                                                   
+  SAY 'O DATASET EXISTE.'                                               
+ELSE                                                                    
+  SAY 'O DATASET NAO EXISTE.'                                           
+RETURN                                                                  
+/*******************************************************************/   
+/** FUNCAO CHECAR SE DATASET EXISTE  - SEGUNDA  FORMA             **/   
+/*******************************************************************/   
+EXISTE:                                                                 
+RETORNO = SYSDSN('ALU0410.RENATO.MYSYS.SYSOUT')                         
+IF RETORNO = 'OK' THEN                                                  
+  SAY 'O DATASET EXISTE.'                                               
+ELSE                                                                    
+  SAY 'O DATASET NãO EXISTE.'                                           
+RETURN                                                                  

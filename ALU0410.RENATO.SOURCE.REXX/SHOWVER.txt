@@ -1,0 +1,5 @@
+/* REXX */                                                
+MVSSTRING = MVSVAR('SYSOPSYS')                            
+SAY 'OPERATING SYSTEM VERSION:' MVSSTRING                 
+EXIT 0                                                    
+/* FUNCAO DE BUSCA DO SISTEMA OPERACIONAL E SUA VERSAO */ 
